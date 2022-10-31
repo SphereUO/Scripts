@@ -1,0 +1,21 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[SKILL 27]
+DEFNAME=Skill_Tactics
+KEY=Tactics
+TITLE=Tactician
+STAT_STR=60
+STAT_DEX=70
+STAT_INT=40
+BONUS_STR=50
+BONUS_DEX=50
+BONUS_INT=0
+BONUS_STATS=10
+ADV_RATE=10.0,150.0,600.0
+
+
+[EOF]

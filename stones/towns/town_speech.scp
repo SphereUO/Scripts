@@ -1,0 +1,15 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[SPEECH spk_townspeech]
+ON=I resign from my town
+IF ((<ARGN1> == <DEF.TALKMODE_SAY>) && <TOWN>)
+    f_townsys_removecharfromtown <town.uid>,<uid>
+    RETURN 6
+ENDIF
+RETURN 1
+
+[EOF]

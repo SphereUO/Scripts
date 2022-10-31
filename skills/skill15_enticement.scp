@@ -1,0 +1,28 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[SKILL 15]
+DEFNAME=Skill_Enticement
+KEY=Enticement
+TITLE=Demoralizer
+PROMPT_MSG=Whom do you wish to entice?
+DELAY=2.0
+STAT_STR=15
+STAT_DEX=50
+STAT_INT=70
+BONUS_STR=0
+BONUS_DEX=50
+BONUS_INT=50
+BONUS_STATS=5
+ADV_RATE=2.5,50.0,200.0
+
+ON=@Fail
+	SRC.SYSMESSAGE Your music fails to attract anyone.
+
+ON=@Abort
+	SRC.SYSMESSAGE You fail to complete the song.
+
+[EOF]

@@ -1,0 +1,13 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[EVENTS e_GuildGenericEvent]
+ON=@UserGuildButton
+src.groster
+return 1
+
+
+[EOF]

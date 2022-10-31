@@ -1,0 +1,88 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[ITEMDEF i_stone_mover]
+ID=i_virtstone_1
+WEIGHT=1
+VALUE=0
+NAME=stone teleporter
+CAN=0
+
+ON=@Click
+if (<link.isitem>)
+    if (<link.type> == T_STONE_GUILD )
+    		message "guildstone teleporter"
+        message <link.name> <qval (<eval strlen(<link.abbrev>)>) ? [<link.abbrev>]:>
+        return 1
+    elif (<link.type> == T_STONE_TOWN )
+    	  message "townstone teleporter"
+        message <link.name>
+        return 1
+    endif
+endif
+
+message "stone teleporter"
+return 1
+
+ON=@ClientTooltip
+
+if (<link.isitem>)
+    if (<link.type> == T_STONE_GUILD )
+    		addcliloc 1041054
+        addcliloc 1070722, <link.name> <qval (<eval strlen(<link.abbrev>)>) ? [<link.abbrev>]:>
+        return 1
+    elif (<link.type> == T_STONE_TOWN )
+    	  addcliloc 1070722,townstone teleporter
+        addcliloc 1070722,<link.name>
+        return 1
+    endif
+endif
+
+addcliloc 1070722,stone teleporter
+return 1
+
+ON=@Dclick
+if (!<link.isitem>)
+    src.sysmessage This teleporting object can not determine what stone to teleport.
+    remove
+    return 1
+endif
+
+if ((<link.type> != T_STONE_GUILD ) && (<link.type> != T_STONE_TOWN ))
+    src.sysmessage This teleporting object can not determine what stone to teleport.
+    remove
+    return 1
+endif
+
+if (<cont.uid> != <src.findlayer(layer_pack).uid> )
+    src.sysmessage That must be in your pack for you to use it.
+    return 1
+endif
+
+if ( !<src.isgm> && ( <link.masteruid> != <src.uid> ))
+    src.sysmessage You must be the master of the guild to use it.
+    return 1
+endif
+
+if ( <link.tag0.stonesys_moveruid> != <uid> )
+    src.sysmessage This teleporting object can not determine what stone to teleport.
+    return 1
+endif
+
+link.removefromview
+link.p = <src.p>
+link.update
+remove
+return 1
+
+ON=@Destroy
+if (<link.isitem>)
+    if ((<link.type> == T_STONE_GUILD ) || (<link.type> == T_STONE_TOWN ))
+        link.tag.stonesys_moveruid =
+    endif
+endif
+
+[EOF]

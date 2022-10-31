@@ -1,0 +1,22 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[SKILL 52]
+DEFNAME=Skill_Bushido
+KEY=Bushido
+TITLE=Samurai
+FLAGS=skf_fight
+STAT_STR=55
+STAT_DEX=95
+STAT_INT=60
+BONUS_STR=20
+BONUS_DEX=80
+BONUS_INT=0
+BONUS_STATS=10
+ADV_RATE=10.0,150.0,600.0
+
+
+[EOF]

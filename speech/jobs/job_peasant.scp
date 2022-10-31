@@ -1,0 +1,26 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[SPEECH Spk_jobPeasant]
+//PEASANT
+DEFAULT=Eh?
+ON=Hail
+ON=Hi
+ON=Greet
+ON=Hello
+	SAY=Oh. Beg yer pardon.
+ON=Job
+ON=What do you do
+	SAY=I does what I can.
+ON=Bye
+ON=Goodbye
+ON=Farewell
+	SAY=Eh.
+	BYE
+	return 1
+//RANDOM=I'm minding my own business.
+
+[EOF]

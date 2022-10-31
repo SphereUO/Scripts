@@ -1,0 +1,18 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[MoonGates]
+1215,467,-13,2=mg_compassion
+722,1366,-60,2=mg_honesty
+744,724,-28,2=mg_honor
+281,1016,0,2=mg_humility
+987,1011,-32,2=mg_justice
+1174,1286,-30,2=mg_sacrifice
+1532,1340,-3,2=mg_spirituality
+528,216,-45,2=mg_valor
+1721,218,96,2=mg_chaos
+
+[EOF]

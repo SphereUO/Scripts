@@ -1,0 +1,29 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[SKILL 17]
+DEFNAME=Skill_Healing
+KEY=Healing
+TITLE=Healer
+PROMPT_MSG=Who will you use the bandages on?
+DELAY=3.0,1.0
+EFFECT=2.0,20.0
+STAT_STR=10
+STAT_DEX=10
+STAT_INT=90
+BONUS_STR=0
+BONUS_DEX=30
+BONUS_INT=70
+BONUS_STATS=20
+ADV_RATE=10.0,100.0,250.0
+
+ON=@Fail
+	SRC.SYSMESSAGE You apply the bandages, but they barely help.
+
+ON=@Abort
+	SRC.SYSMESSAGE You stop applying the bandages.
+
+[EOF]

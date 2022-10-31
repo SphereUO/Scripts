@@ -1,0 +1,11 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[MoonGates]
+719,1863,40,5=mg_valley_of_eodon
+
+
+[EOF]

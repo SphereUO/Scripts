@@ -1,0 +1,28 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[SKILL 39]
+DEFNAME=Skill_Vet
+KEY=Veterinary
+TITLE=Veterinarian
+PROMPT_MSG=What animal would you like to heal?
+DELAY=2.0
+STAT_STR=30
+STAT_DEX=40
+STAT_INT=50
+BONUS_STR=20
+BONUS_DEX=20
+BONUS_INT=60
+BONUS_STATS=20
+ADV_RATE=10.0,200.0,800.0
+
+ON=@Fail
+	SRC.SYSMESSAGE You apply the bandages, but they barely help.
+
+ON=@Abort
+	SRC.SYSMESSAGE You stop applying the bandages.
+
+[EOF]

@@ -1,0 +1,35 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[COMMENT sphere_skillmenu]
+SphereServer has a number of hardcoded skillmenu's, this file contains the softcoded component.
+The purpose of this specific skillmenu is as follows:
+sm_summon_familiar	= Triggered by the Necromancy "Summon Familiar" spell
+
+[SKILLMENU sm_Summon_Familiar]
+What do you want to summon ?
+
+ON=i_pet_daemon_horde <name>
+TEST=NECROMANCY 30.0,SPIRITSPEAK 30.0
+SUMMON=c_daemon_horde_minion
+
+ON=i_pet_wisp <name>
+TEST=NECROMANCY 50.0,SPIRITSPEAK 50.0
+SUMMON=c_wisp_dark	//Should be c_wisp_shadow ?
+
+ON=i_pet_wolf_grey <name>
+TEST=NECROMANCY 60.0,SPIRITSPEAK 60.0
+SUMMON=c_wolf_dark
+
+//ON=i_pet_death_adder <name>
+//TEST=NECROMANCY 80.0,SPIRITSPEAK 80.0
+//SUMMON=c_Death_adder
+
+ON=i_pet_vampirebat <name>
+TEST=NECROMANCY 100.0,SPIRITSPEAK 100.0
+SUMMON=c_vampire_bat
+
+[EOF]

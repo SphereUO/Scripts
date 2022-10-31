@@ -1,0 +1,40 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[SPEECH spk_hireling]
+// Pets that can talk.
+ON=ATTACK
+ON=BOUGHT
+ON=CASH
+ON=COME
+ON=DROP
+ON=DROP ALL
+ON=EQUIP
+ON=EQUIP ALL
+ON=FOLLOW
+ON=FOLLOW ME
+ON=FRIEND
+ON=GET DRESSED
+ON=GO
+ON=GUARD
+ON=GUARD ME
+ON=INVENTORY
+ON=KILL
+ON=PRICE   // may have args ?
+ON=RECIEVED
+ON=RELEASE
+ON=SAMPLES
+ON=SPEAK
+ON=STATUS
+ON=STAY
+ON=STAY HERE
+ON=STOCK
+ON=STOP
+ON=SUIT UP
+ON=TRANSFER
+ON=UNFRIEND
+
+[EOF]

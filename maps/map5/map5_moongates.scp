@@ -1,0 +1,12 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[MoonGates]
+851,3526,-38,5=mg_royal_city
+926,3989,-36,5=mg_holy_city
+
+
+[EOF]

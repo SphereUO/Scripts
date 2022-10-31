@@ -1,0 +1,37 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[TYPEDEF T_STONE_TOWN]
+ON=@Click
+  message "a townstone"
+  message <name> <qval (<eval strlen(<abbrev>)>) ? [<abbrev>]:>
+return 1
+
+ON=@ClientToolTip
+  addcliloc 1042971,a townstone
+  addcliloc 1070722,Town name: <name>
+return 1
+
+
+ON=@Dclick
+  If (<distance> > 2)
+    src.sysmessage @038A That is too far away.
+  elif (<member.count>==0)&&(!<masteruid>)	//(<masteruid>!=<src.uid>)
+    f_townsys_addchartotown <uid>,<src.uid>,1	//auto makes the master
+  elif (!<masteruid>)
+    f_townsys_addchartotown <uid>,<member.0.uid>,1	//first candidate since any member would auto be a master
+  elif (<memberfromuid.<src.uid>.uid>!=<src.uid>)&&(!<src.isgm>)// Not a member
+    // add apply for citizenship dialog
+  elif (<memberfromuid.<src.uid>.priv> == <def0.STONEPRIV_ACCEPTED>)
+    f_townsys_addchartotown <uid>,<src.uid>,1
+  elif (<memberfromuid.<src.uid>.priv>==<def0.STONEPRIV_CANDIDATE>)&&(!<src.isgm>)
+    src.message @03B2 You are awaiting acceptance by the townmaster.
+  elif (<memberfromuid.<src.uid>.priv>==<def0.STONEPRIV_MEMBER>)||(<masteruid>==<src.uid>)||(<src.isgm>)
+    sdialog d_Town_Main,0
+  endif
+return 1
+
+[EOF]

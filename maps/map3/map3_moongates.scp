@@ -1,0 +1,12 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[MoonGates]
+1015,527,-65,3=mg_luna
+1997,1386,-85,3=mg_umbra
+
+
+[EOF]

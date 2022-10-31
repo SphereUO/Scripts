@@ -1,0 +1,29 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[SKILL 0]
+DEFNAME=Skill_Alchemy
+KEY=Alchemy
+TITLE=Alchemist
+FLAGS=skf_craft
+DELAY=2.5		//Old value=3.0,1.0 // per stroke.
+STAT_STR=5
+STAT_DEX=40
+STAT_INT=75
+BONUS_STR=0
+BONUS_DEX=20
+BONUS_INT=80
+BONUS_STATS=10
+ADV_RATE=10.0,200.0,800.0
+VALUES=1,20,100
+
+ON=@Fail
+	SRC.SYSMESSAGE You toss the failed mixture from the mortar, unable to create a potion from it.
+
+ON=@Abort
+	SRC.SYSMESSAGE You fail to complete the potion.
+
+[EOF]

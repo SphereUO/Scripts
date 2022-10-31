@@ -1,0 +1,30 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[SKILL 7]
+DEFNAME=Skill_Blacksmith
+KEY=Blacksmithing
+TITLE=Blacksmith
+FLAGS=skf_craft
+DELAY=1.7
+STAT_STR=95
+STAT_DEX=25
+STAT_INT=15
+BONUS_STR=75
+BONUS_DEX=20
+BONUS_INT=5
+BONUS_STATS=10
+ADV_RATE=2.5,50.0,200.0
+VALUES=1,20,100
+
+ON=@Fail
+	SRC.SYSMESSAGE You have failed to make anything
+
+ON=@Abort
+	SRC.SYSMESSAGE You fail to complete the item.
+
+
+[EOF]

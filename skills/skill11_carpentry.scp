@@ -1,0 +1,30 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[SKILL 11]
+DEFNAME=Skill_Carpentry
+KEY=Carpentry
+TITLE=Carpenter
+FLAGS=skf_craft
+DELAY=1.2		//Old value=3.0
+STAT_STR=60
+STAT_DEX=30
+STAT_INT=40
+BONUS_STR=50
+BONUS_DEX=30
+BONUS_INT=20
+BONUS_STATS=25
+ADV_RATE=2.5,50.0,200.0
+VALUES=1,20,80
+
+ON=@Fail
+	SRC.SYSMESSAGE You fail to create the item
+
+ON=@Abort
+	SRC.SYSMESSAGE You fail to complete the item.
+
+
+[EOF]

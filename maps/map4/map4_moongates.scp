@@ -1,0 +1,12 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[MoonGates]
+1169,998,42,4=mg_isamu_jima
+802,1204,25,4=mg_makoto_jima
+270,628,15,4=mg_homare_jima
+
+[EOF]

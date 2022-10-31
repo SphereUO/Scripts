@@ -1,0 +1,45 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[COMMENT sphere_skillmenu]
+SphereServer has a number of hardcoded skillmenu's, this file contains the softcoded component.
+The purpose of these specific skillmenus is as follows:
+sm_bowcraft			= Triggered by DClicking a knife and using it on wood
+sm_bolts			= Triggered by DClicking arrows or shafts
+
+[SKILLMENU sm_BOWCRAFT]
+// knife on wood
+What do you want to carve the wood into?
+
+ON=i_KINDLING <name> (<resmake>)
+MAKEITEM=i_KINDLING
+
+ON=i_TORCH <name> (<resmake>)
+MAKEITEM=i_TORCH
+
+ON=i_ARROW_SHAFT <name> (<resmake>)
+MAKEITEM=i_ARROW_SHAFT
+
+ON=i_bow <name> (<resmake>)
+MAKEITEM=i_bow
+
+ON=i_CROSSBOW <name> (<resmake>)
+MAKEITEM=i_CROSSBOW
+
+ON=i_crossbow_heavy <name> (<resmake>)
+MAKEITEM=i_crossbow_heavy
+
+[SKILLMENU sm_bolts]
+// combine shafts with feathers.
+Select arrow type
+
+ON=i_xbolt <name> (<resmake>)
+MAKEITEM=i_xbolt
+
+ON=i_arrow <name> (<resmake>)
+MAKEITEM=i_arrow
+
+[EOF]

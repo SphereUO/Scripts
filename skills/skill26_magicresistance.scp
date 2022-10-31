@@ -1,0 +1,22 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[SKILL 26]
+DEFNAME=Skill_MagicResist
+KEY=MagicResistance
+TITLE=Warder
+EFFECT=0.0,90.0
+STAT_STR=40
+STAT_DEX=40
+STAT_INT=100
+BONUS_STR=0
+BONUS_DEX=0
+BONUS_INT=100
+BONUS_STATS=50
+ADV_RATE=10.0,200.0,800.0
+
+
+[EOF]

@@ -1,0 +1,86 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+// Town stones. mayor view
+[MENU MENU_TOWN_MAYOR]
+Town of <Name> (<MasterTitle> <Master>)
+ON=0 View the current citizenship.
+VIEWROSTER
+ON=0 View the town's charter.
+VIEWCHARTER
+ON=0 Vote for mayor. You are currently loyal to <LoyalTo>.
+DECLAREFEALTY
+ON=0 Resign from the town.
+RESIGN
+//ON=0 View list of those banished from the town.
+//VIEWBANISHED
+ON=0 View list of those applying for citizenship.
+VIEWCANDIDATES
+ON=0 View list of towns that <Name> has declared war on.
+VIEWENEMYS
+ON=0 View list of towns that have declared war on <Name>.
+VIEWTHREATS
+ON=0 Access Mayoral functions.
+MASTERMENU
+
+// This is the member, NON-mayor townstones
+[MENU MENU_TOWN_MEMBER]
+Town of <Name> (<MasterTitle> <Master>)
+ON=0 View the current citizenship.
+VIEWROSTER
+ON=0 View the town's charter.
+VIEWCHARTER
+ON=0 Vote for mayor. You are currently loyal to <LoyalTo>.
+DECLAREFEALTY
+ON=0 Resign from the town.
+RESIGN
+//ON=0 View list of those banished from the town.
+//VIEWBANISHED
+ON=0 View list of those applying for citizenship.
+VIEWCANDIDATES
+ON=0 View list of towns that <Name> has declared war on.
+VIEWENEMYS
+ON=0 View list of towns that have declared war on <Name>.
+VIEWTHREATS
+
+// Mayor functions.
+[MENU MENU_TOWN_MAYORFUNC]
+Town of <Name>, Mayoral functions
+ON=0 Set the town name.
+SETNAME
+ON=0 Set the town's charter.
+SETCHARTER
+ON=0 Banish a citizen.
+DISMISSMEMBER
+ON=0 Declare war.
+DECLAREWAR
+ON=0 Declare peace.
+DECLAREPEACE
+ON=0 Accept a person seeking citizenship.
+ACCEPTCANDIDATE
+ON=0 Refuse a person seeking citizenship.
+REFUSECANDIDATE
+ON=0 Set the mayors's title.
+SETGMTITLE
+ON=0 Grant a title to a citizen.
+GRANTTITLE
+ON=0 Return to main menu.
+RETURNMAINMENU
+
+// Non-member view.
+[MENU MENU_TOWN_NON]
+Town of <Name> (<MasterTitle> <Master>)
+ON=0 View the towns's charter.
+VIEWCHARTER
+ON=0 View list of towns that <Name> has declared war on.
+VIEWENEMYS
+ON=0 View list of towns that have declared war on <Name>.
+VIEWTHREATS
+ON=0 Apply for citizenship
+APPLYTOJOIN
+
+
+[EOF]
