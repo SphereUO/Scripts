@@ -1,0 +1,28 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[SKILL 10]
+DEFNAME=Skill_Camping
+KEY=Camping
+TITLE=Explorer
+DELAY=6.0
+STAT_STR=30
+STAT_DEX=30
+STAT_INT=30
+BONUS_STR=33
+BONUS_DEX=33
+BONUS_INT=34
+BONUS_STATS=50
+ADV_RATE=2.5,50.0,200.0
+
+ON=@Fail
+	SRC.SYSMESSAGE You fail to ignite the campfire.
+
+ON=@Abort
+	SRC.SYSMESSAGE You give up trying to light the campfire.
+
+
+[EOF]

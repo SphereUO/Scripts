@@ -1,0 +1,161 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+///////////////////////////
+// Swordsmanship Weapons //
+///////////////////////////
+
+[TEMPLATE random_weapon_sword_normal]
+CATEGORY=Item Templates
+SUBSECTION=Weapon Templates
+DESCRIPTION=Swords Normal
+ITEM={ i_bone_machete 1 i_bardiche 1 i_sword_broad 1 i_sword_long 1 i_scimitar 1 i_sword_long_b 1 i_sword_viking 1 i_katana 1 i_halberd 1 i_cutlass 1 i_bone_harvester 1 i_crescent_blade 1 i_sword_paladin 1 i_no_dachi 1 i_wakizashi 1 i_bokuto 1 i_daisho 1 i_kama 1 i_rune_blade 1 i_radiant_scimitar 1 i_elven_machete 1 }
+
+[TEMPLATE random_weapon_sword_gargish]
+CATEGORY=Item Templates
+SUBSECTION=Weapon Templates
+DESCRIPTION=Swords Gargish
+ITEM={ i_dual_shortaxes 1 i_stone_warsword 1 i_gargish_talwar 1 i_sword_dread 1 i_sword_glass 1 i_gargish_cleaver 1 i_gargish_bardiche 1 i_gargish_knife_butcher 1 i_gargish_katana 1 i_gargish_scythe 1 i_gargish_bone_harvester 1 i_gargish_daisho 1 }
+
+[TEMPLATE random_weapon_axe_normal]
+CATEGORY=Item Templates
+SUBSECTION=Weapon Templates
+DESCRIPTION=Axes Normal
+ITEM={ i_hatchet 1 i_axe_exec 1 i_axe_battle 1 i_axe 1 i_axe_double 1 i_axe_war 1 i_axe_battle_large 1 i_axe_two_hand 1 i_ornate_axe 1 }
+
+[TEMPLATE random_weapon_axe_gargish]
+CATEGORY=Item Templates
+SUBSECTION=Weapon Templates
+DESCRIPTION=Axes Gargish
+ITEM={ i_gargish_axe_battle 1 i_gargish_axe 1 }
+
+//////////////////////////////////
+// Archery and Throwing Weapons //
+//////////////////////////////////
+
+[TEMPLATE random_weapon_archer_normal]
+CATEGORY=Item Templates
+SUBSECTION=Weapon Templates
+DESCRIPTION=Archer
+ITEM={ i_bow 1 i_bow_composite 1 i_yumi 1 i_elven_composite_longbow 1 i_magical_shortbow 1 i_crossbow 1 i_crossbow_heavy 1 i_crossbow_repeating 1 }
+
+[TEMPLATE random_weapon_throwing_gargish]
+CATEGORY=Item Templates
+SUBSECTION=Weapon Templates
+DESCRIPTION=Throwing Gargish
+ITEM={ i_boomerang 1 i_cyclone 1 i_soul_glaive 1 }
+
+/////////////////////
+// Fencing Weapons //
+/////////////////////
+
+[TEMPLATE random_weapon_fencing_normal]
+CATEGORY=Item Templates
+SUBSECTION=Weapon Templates
+DESCRIPTION=Fencing Normal
+ITEM={ i_pitchfork 1 i_cleaver_meat 1 i_knife_skinning 1 i_dagger 1 i_spear 1 i_knife_butcher 1 i_kryss 1 i_spear_short 1 i_war_fork 1 i_scythe 1 i_pike 1 i_lance 1 i_tessen 1 i_lajatang 1 i_tekagi 1 i_sai 1 i_elven_spellblade 1 i_sword_assassin_spike 1 i_sword_leafblade 1 i_sword_warcleaver 1 }
+
+[TEMPLATE random_weapon_fencing_gargish]
+CATEGORY=Item Templates
+SUBSECTION=Weapon Templates
+DESCRIPTION=Fencing Gargish
+ITEM={ i_bloodblade 1 i_gargish_dagger 1 i_spear_dualpoint 1 i_shortblade 1 i_gargish_kryss 1 i_gargish_war_fork 1 i_gargish_pike 1 i_gargish_lance 1 i_gargish_tekagi 1 }
+
+//////////////////////////
+// Macefighting Weapons //
+//////////////////////////
+
+[TEMPLATE random_weapon_mace_normal]
+CATEGORY=Item Templates
+SUBSECTION=Weapon Templates
+DESCRIPTION=Mace Normal
+ITEM={ i_staff_black 1 i_crook_thin 1 i_pickaxe 1 i_staff_quarter 1 i_mace 1 i_hammer_sledge 1 i_club 1 i_hammer_smith 1 i_shepherds_crook 1 i_staff_gnarled 1 i_mace_war 1 i_hammer_war 1 i_maul 1 i_hammer_pick 1 i_scepter 1 i_staff_bladed 1 i_staff_bladed_double 1 i_tetsubo 1 i_nunchaku 1 i_mace_diamond 1 i_staff_wild 1 }
+
+[TEMPLATE random_weapon_mace_gargish]
+CATEGORY=Item Templates
+SUBSECTION=Weapon Templates
+DESCRIPTION=Mace Gargish
+ITEM={ i_mace_disc 1 i_gargish_hammer_war 1 i_gargish_maul 1 i_gargish_tessen 1 }
+
+[TEMPLATE random_weapon_staff_normal]
+CATEGORY=Item Templates
+SUBSECTION=Weapon Templates
+DESCRIPTION=Staves Normal
+ITEM={ i_staff_gnarled 1 i_staff_quarter 1 i_staff_black 1 i_staff_wild 1 i_staff_bladed 1 i_staff_bladed_double 1 }
+
+[TEMPLATE random_weapon_staff_gargish]
+CATEGORY=Item Templates
+SUBSECTION=Weapon Templates
+DESCRIPTION=Staves Gargish
+ITEM={ i_staff_glass 1 i_staff_serpentstone 1 i_gargish_staff_gnarled 1 }
+
+///////////////////////
+// Random Weapon All //
+///////////////////////
+
+[TEMPLATE random_weapon_all_normal]
+CATEGORY=Item Templates
+SUBSECTION=Weapon Templates
+DESCRIPTION=Weapons Normal
+ITEM={ random_weapon_sword_normal 1 random_weapon_axe_normal 1 random_weapon_archer_normal 1 random_weapon_fencing_normal 1 random_weapon_mace_normal 1 random_weapon_staff_normal 1 }
+
+[TEMPLATE random_weapon_all_gargish]
+CATEGORY=Item Templates
+SUBSECTION=Weapon Templates
+DESCRIPTION=Weapons Gargish
+ITEM={ random_weapon_sword_gargish 1 random_weapon_axe_gargish 1 random_weapon_throwing_gargish 1 random_weapon_fencing_gargish 1 random_weapon_mace_gargish 1 random_weapon_staff_gargish 1 }
+
+/////////////////////////
+// Weighted Weapon All //
+/////////////////////////
+
+[TEMPLATE random_weapon_all]
+CATEGORY=Item Templates
+SUBSECTION=Weapon Templates
+DESCRIPTION=All Weapon
+ITEM={ random_weapon_all_normal 1 random_weapon_all_gargish 1 }
+
+////////////////////
+// Magical Weapon //
+////////////////////
+[TEMPLATE random_weapon_magic_all]
+CATEGORY=Item Templates
+SUBSECTION=Weapon Templates
+DESCRIPTION=All Weapon Magic
+ITEM={ random_weapon_ruin 1 random_weapon_might 1 random_weapon_force 1 random_weapon_power 1 random_weapon_vanq 1 }
+
+[TEMPLATE random_weapon_ruin]
+CATEGORY=Item Templates
+SUBSECTION=Weapon Templates
+DESCRIPTION=All Weapon Ruin
+ITEM={ i_scimitar_ruin 1 i_halberd_ruin 1 i_bardiche_ruin 1 i_cutlass_ruin 1 i_sword_viking_ruin 1 i_katana_ruin 1 i_pitchfork_ruin 1 i_broadsword_ruin 1 i_kryss_ruin 1 i_sword_long_ruin 1 i_spear_ruin 1 i_spear_short_ruin 1 i_war_fork_ruin 1 i_mace_ruin 1 i_mace_war_ruin 1 i_maul_ruin 1 i_hammer_pick_ruin 1 i_hammer_war_ruin 1 i_axe_ruin 1 i_axe_exec_ruin 1 i_axe_battle_ruin 1 i_axe_double_ruin 1 i_axe_two_hand_ruin 1 i_axe_war_ruin 1 i_axe_battle_large_ruin 1 i_club_ruin 1 i_bow_ruin 1 i_crossbow_ruin 1 i_crossbow_heavy_ruin 1 }
+
+[TEMPLATE random_weapon_might]
+CATEGORY=Item Templates
+SUBSECTION=Weapon Templates
+DESCRIPTION=All Weapon might
+ITEM={ i_scimitar_might 1 i_halberd_might 1 i_bardiche_might 1 i_cutlass_might 1 i_sword_viking_might 1 i_katana_might 1 i_pitchfork_might 1 i_broadsword_might 1 i_kryss_might 1 i_sword_long_might 1 i_spear_might 1 i_spear_short_might 1 i_war_fork_might 1 i_mace_might 1 i_mace_war_might 1 i_maul_might 1 i_hammer_pick_might 1 i_hammer_war_might 1 i_axe_might 1 i_axe_exec_might 1 i_axe_battle_might 1 i_axe_double_might 1 i_axe_two_hand_might 1 i_axe_war_might 1 i_axe_battle_large_might 1 i_club_might 1 i_bow_might 1 i_crossbow_might 1 i_crossbow_heavy_might 1 }
+
+[TEMPLATE random_weapon_force]
+CATEGORY=Item Templates
+SUBSECTION=Weapon Templates
+DESCRIPTION=All Weapon force
+ITEM={ i_scimitar_force 1 i_halberd_force 1 i_bardiche_force 1 i_cutlass_force 1 i_sword_viking_force 1 i_katana_force 1 i_pitchfork_force 1 i_broadsword_force 1 i_kryss_force 1 i_sword_long_force 1 i_spear_force 1 i_spear_short_force 1 i_war_fork_force 1 i_mace_force 1 i_mace_war_force 1 i_maul_force 1 i_hammer_pick_force 1 i_hammer_war_force 1 i_axe_force 1 i_axe_exec_force 1 i_axe_battle_force 1 i_axe_double_force 1 i_axe_two_hand_force 1 i_axe_war_force 1 i_axe_battle_large_force 1 i_club_force 1 i_bow_force 1 i_crossbow_force 1 i_crossbow_heavy_force 1 }
+
+[TEMPLATE random_weapon_power]
+CATEGORY=Item Templates
+SUBSECTION=Weapon Templates
+DESCRIPTION=All Weapon power
+ITEM={ i_scimitar_power 1 i_halberd_power 1 i_bardiche_power 1 i_cutlass_power 1 i_sword_viking_power 1 i_katana_power 1 i_pitchfork_power 1 i_broadsword_power 1 i_kryss_power 1 i_sword_long_power 1 i_spear_power 1 i_spear_short_power 1 i_war_fork_power 1 i_mace_power 1 i_mace_war_power 1 i_maul_power 1 i_hammer_pick_power 1 i_hammer_war_power 1 i_axe_power 1 i_axe_exec_power 1 i_axe_battle_power 1 i_axe_double_power 1 i_axe_two_hand_power 1 i_axe_war_power 1 i_axe_battle_large_power 1 i_club_power 1 i_bow_power 1 i_crossbow_power 1 i_crossbow_heavy_power 1 }
+
+[TEMPLATE random_weapon_vanq]
+CATEGORY=Item Templates
+SUBSECTION=Weapon Templates
+DESCRIPTION=All Weapon vanq
+ITEM={ i_scimitar_vanq 1 i_halberd_vanq 1 i_bardiche_vanq 1 i_cutlass_vanq 1 i_sword_viking_vanq 1 i_katana_vanq 1 i_pitchfork_vanq 1 i_broadsword_vanq 1 i_kryss_vanq 1 i_sword_long_vanq 1 i_spear_vanq 1 i_spear_short_vanq 1 i_war_fork_vanq 1 i_mace_vanq 1 i_mace_war_vanq 1 i_maul_vanq 1 i_hammer_pick_vanq 1 i_hammer_war_vanq 1 i_axe_vanq 1 i_axe_exec_vanq 1 i_axe_battle_vanq 1 i_axe_double_vanq 1 i_axe_two_hand_vanq 1 i_axe_war_vanq 1 i_axe_battle_large_vanq 1 i_club_vanq 1 i_bow_vanq 1 i_crossbow_vanq 1 i_crossbow_heavy_vanq 1 }
+
+
+[EOF]

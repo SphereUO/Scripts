@@ -1,0 +1,427 @@
+﻿//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[TYPEDEF t_shrine]
+ON=@ContextMenuRequest
+SRC.AddContextEntry 101,3006195,<QVAL (<SRC.FLAGS> & statf_dead)? 0:1>	//Resurrect
+
+ON=@ContextMenuSelect
+IF (<ARGN>==101) && (<SRC.FLAGS> & statf_dead)
+ SRC.RESURRECT
+ENDIF
+
+[TYPEDEF t_chest_trap]	// FIXME: does the spell work?
+// Replace the TYPE of any container with this custom TYPE
+// 1. Check tinkering
+// 2. Check tools (no, 50% blow up)
+// 3. Check for gear
+// 4. Blow up if failed
+// 5. Consume gear
+ON=@DClick
+   IF (<SRC.RESTEST 1 i_gears>)
+      SRC.CONSUME 1 i_gears
+   ELSE
+      SRC.MESSAGE You fail to disarm the trap.
+      SRC.DAMAGE=<eval <MORE1> - <MORE2>> <DEF.dam_fire>
+      SERV.NEWITEM=i_fire_column
+      NEW.ATTR attr_can_decay|attr_move_never
+      NEW.P=<SRC.P>
+      NEW.TIMER 2
+      SRC.SOUND=snd_spell_explosion
+      RETURN 0
+   ENDIF
+   IF (<SRC.TINKERING> >= <MOREX>)
+      SRC.MESSAGE You attempt to disarm the trap.
+      IF (<SRC.RESTEST 1 i_tinker_tools>)
+         IF (RAND(2))
+            SRC.MESSAGE You disarm the trap successfully.
+            TIMER=<MOREY>
+            MOREZ=1
+            TYPE=t_container
+            RETURN 0
+         ELSE
+            SRC.MESSAGE You fail to disarm the trap.
+            SRC.DAMAGE=<eval <MORE1> - <MORE2>>
+            SERV.NEWITEM=i_FIRE_COLUMN
+            NEW.ATTR attr_can_decay|attr_move_never
+            NEW.TIMER 2
+            NEW.P=<SRC.P>
+            SRC.UPDATE
+            SRC.SOUND=snd_SPELL_EXPLOSION
+            RETURN 0
+         ENDIF
+      ELSE
+         IF (RAND(10) == 5)
+            SRC.MESSAGE You disarm the trap successfully.
+            TIMER=<MOREY>
+            MOREZ=1
+            TYPE=T_CONTAINER
+            RETURN 0
+         ELSE
+            SRC.MESSAGE You fail to disarm the trap.
+            SRC.DAMAGE=<eval <MORE1> - <MORE2>>
+            SERV.NEWITEM i_fire_column
+            NEW.ATTR attr_can_decay|attr_move_never
+            NEW.TIMER 2
+            NEW.P=<SRC.P>
+            SRC.UPDATE
+            SRC.SOUND snd_spell_explosion
+            RETURN 0
+         ENDIF
+      ENDIF
+   ENDIF
+ON=@Timer
+   MOREZ=0
+   RETURN 1
+
+[TYPEDEF t_kitchenknife]
+// FIXME: good idea, but it works for only one item.
+ON=@DClick
+   TARGET
+   RETURN 1
+ON=@TargOn_Item
+   IF (!STRCMPI(i_cake_tiered,<ARGO.DEFNAME>))
+      IF (<ARGO.TOPOBJ>!=<SRC>)
+         SRC.SYSMESSAGELOC color_text,1042001//"That must be in your backpack for you to use it."
+         RETURN 1
+      ENDIF
+      FOR 6
+         SERV.NEWITEM i_cake_tiered_slice,1,<SRC>
+         NEW.COLOR=<ARGO.COLOR>
+      ENDFOR
+      ARGO.REMOVE
+   ENDIF
+   //FIXME: wheel of cheese and pie should be carved like this
+   RETURN 1
+
+
+[TYPEDEF t_plantclipping_tool]
+// This TYPEDEF works best when applied as the TYPE on a custom item
+// (typically based off i_clippers).  It lets the user manufacture plant
+// clippings and dry reeds for use in fabricating baskets etc.
+ON=@ClientToolTip
+   addcliloc 1060728,<dMORE2L>,<dMORE2H>//"charges: ~/~"
+   IF (<MORE1>)
+      addcliloc 1112283//"Set to cut reeds"
+   ELSE
+      addcliloc 1112282//"Set to clip plants"
+   ENDIF
+ON=@ContextMenuRequest
+   SRC.AddContextEntry 101,5089//"Type"
+ON=@ContextMenuSelect
+   IF (<TOPOBJ.UID>!=<SRC>)// && !(<SRC.ISGM>)
+      SRC.SYSMESSAGELOC color_text,1042001//"That must be in your backpack for you to use it."
+      RETURN 1
+   ENDIF
+   IF (<MORE1>)
+      SRC.SYSMESSAGELOC color_text,1112285//"You are now set to make plant clippings."
+      MORE1=0
+   ELSE
+      SRC.SYSMESSAGELOC color_text,1112286//"You are now set to cut reeds."
+      MORE1=1
+   ENDIF
+   RESENDTOOLTIP
+   RETURN 1
+ON=@DClick
+   IF (<TOPOBJ.UID>!=<SRC>)// && !(<SRC.ISGM>)
+      SRC.SYSMESSAGELOC color_text,1042001//"That must be in your backpack for you to use it."
+      RETURN 1
+   ENDIF
+   SRC.SYSMESSAGELOC color_text,1112118//"What plant do you wish to use these clippers on?"
+   TARGET
+   RETURN 1
+ON=@TargOn_Item
+   IF (<SRC.TARG.TOPOBJ.UID>!=<SRC>)// && !(<SRC.ISGM>)
+      SRC.SYSMESSAGELOC color_text,1042001//"That must be in your backpack for you to use it."
+      RETURN 1
+   ENDIF
+   IF !(<SRC.TARG.ISTEVENT.t_decorative_plant>)
+      SRC.SYSMESSAGELOC color_text,1112119//"You may only use these clippers on decorative plants."
+   ELSE
+      IF (<MORE1>)
+         SERV.NEWITEM i_dry_reed
+         NEW.COLOR=<SRC.TARG.COLOR>
+         NEW.BOUNCE
+      ELSE
+         SERV.NEWITEM i_plant_clippings,1,<SRC>
+         SRC.SYSMESSAGELOC color_text,1112120//"You cut the plant into small pieces and place them in your backpack."
+      ENDIF
+      SRC.TARG.REMOVE
+      MORE2L -= 1
+      IF (<MORE2L> < 1)
+         SRC.SYSMESSAGELOC color_text,1112126//"Your clippers break as you use up the last charge."
+         REMOVE
+      ENDIF
+      RESENDTOOLTIP
+   ENDIF
+   RETURN 1
+
+
+[TYPEDEF t_aquarium_item]
+[TYPEDEF t_aquarium]
+// If an item is of TYPE=t_container it can also have a TEVENTS=t_aquarium added
+// to it, in which case, it allows only t_fish and t_aquarium_item objects to be
+// put into it.  Every time it is opened, those objects change position...
+// hours of entertainment - no really!
+// ON=@DClick
+//    //Randomize all object locations when opened
+//    FORCONT <UID> 0
+//       CONTP=<R1,348>,<R1,198>
+//    ENDFOR
+// ON=@DropOn_Self
+//    //Only allow aquarium items and fish
+//    IF (<ARGO.TYPE>!=t_aquarium_item) && (<ARGO.TYPE>!=t_fish)
+//       RETURN 1
+//    ENDIF
+ON=@DClick
+SDIALOG d_aquarium
+SOUND 05a4
+return 1
+
+ON=@ClientTooltip
+SRC.ADDCLILOC 1074247,<dTAG0.LiveCreatures>,30	//Live Creatures: ~1_NUM~ / ~2_MAX~
+IF (<TAG0.Decorations>)
+   SRC.ADDCLILOC 1074249,<dTAG0.Decorations>	//Decorations: ~1_NUM~
+ENDIF
+
+ON=@DropOn_Self
+IF (<ARGO.TAG0.AquariumCreature>)
+   IF (<TAG0.LiveCreatures> >= 30)
+      SRC.SYSMESSAGE The aquarium can not hold the creature.
+      return 1
+   ENDIF
+   SRC.SYSMESSAGE You add the following creature to your aquarium: <ARGO.NAME>
+   TAG0.LiveCreatures ++
+ELSE
+   IF !(<ARGO.TAG0.AquariumDecoration>)
+      SRC.SYSMESSAGE The aquarium can not hold that item.
+      return 1
+   ELIF (<RESCOUNT> >= 125)
+      SRC.SYSMESSAGE The decoration will not fit in the aquarium.
+      return 1
+   ENDIF
+   SRC.SYSMESSAGE You add the following decoration to your aquarium: <ARGO.NAME>
+   TAG0.Decorations ++
+ENDIF
+TIMERF 1,RESENDTOOLTIP
+
+
+[TYPEDEF t_map_treasure]
+ON=@DClick
+IF (<TOPOBJ> != <SRC>)
+ SRC.SYSMESSAGE <DEFMSG.reach_fail>
+ return 1
+ELIF !(<MORE1>)
+ TreasureMap_Decode
+ return 1
+ELIF (<TreasureMap_CanDig>)
+ TreasureMap_Dig
+ return 1
+ENDIF
+MESSAGE The treasure is marked by the red pin. Grab a shovel and go dig it up!
+return 0
+
+ON=@ClientToolTip
+IF (<MOREM> == 0)
+ SRC.ADDCLILOC 1041502	//for somewhere in Felucca
+ELIF (<MOREM> == 1)
+ SRC.ADDCLILOC 1041503	//for somewhere in Trammel
+ELIF (<MOREM> == 2)
+ SRC.ADDCLILOC 1060850	//for somewhere in Ilshenar
+ELIF (<MOREM> == 3)
+ SRC.ADDCLILOC 1060851	//for somewhere in Malas
+ELIF (<MOREM> == 4)
+ SRC.ADDCLILOC 1115645	//for somewhere in Tokuno Islands
+ELIF (<MOREM> == 5)
+ SRC.ADDCLILOC 1115646	//for somewhere in Ter Mur
+ENDIF
+
+ON=@ContextMenuRequest
+IF !(<MORE1>)
+ SRC.AddContextEntry 120,6147,<QVAL (<TOPOBJ> == <SRC>)? 0:1>	//Decode Map
+ELSE
+ SRC.AddContextEntry 121,6148,<QVAL (<TOPOBJ> == <SRC>)? 0:1>	//Dig For Treasure
+ENDIF
+
+ON=@ContextMenuSelect
+IF (<TOPOBJ> != <SRC>)
+ return 1
+ELIF (<ARGN> == 120)
+ IF !(<MORE1>)
+  TreasureMap_Decode
+ ENDIF
+ELIF (<ARGN> == 121)
+ IF (<TreasureMap_CanDig>)
+  TreasureMap_Dig
+ ENDIF
+ENDIF
+
+[TYPEDEF t_mounted_pixie]
+ON=@DClick
+   IF (<DEFNAME>==i_mounted_pixie_1)//dark green girlie voice
+      DORAND 4
+         SRC.SOUND 0555//"ouch, OUCH, Owieeeee"
+         SRC.SOUND 0556//"Pleaseeeeee"
+         SRC.SOUND 0557//"Help meeee"
+         SRC.SOUND 0558//"Let me downn"
+      ENDDO
+   ELIF (<DEFNAME>==i_mounted_pixie_2)//orange male voice
+      DORAND 4
+         SRC.SOUND 0559//"Oh man, come on! I am beggin you!"
+         SRC.SOUND 055a//"Lemme out!"
+         SRC.SOUND 055b//"Ph-phleasseeee!"
+         SRC.SOUND 055c//"Help me!"
+      ENDDO
+   ELIF (<DEFNAME>==i_mounted_pixie_3)//blue
+      DORAND 3
+         SRC.SOUND 055d//"Let me down!"
+         SRC.SOUND 055e//"Phhleeaseeeeee!"
+         SRC.SOUND 055f//"Halp meee!"
+      ENDDO
+   ELIF (<DEFNAME>==i_mounted_pixie_4)//light green
+      DORAND 3
+         SRC.SOUND 0560//"Help meeeeee!"
+         SRC.SOUND 0561//"Let me down!"
+         SRC.SOUND 0562//"Phhleeaseeeeee!"
+      ENDDO
+   ELIF (<DEFNAME>==i_mounted_pixie_5)//pink
+      DORAND 3
+         SRC.SOUND 0563//"Let me down"
+         SRC.SOUND 0564//"Pleaseeee"
+         SRC.SOUND 0565//"ouch, OUCH, OOWIEE"
+      ENDDO
+   ENDIF
+   RETURN 1
+
+
+[TYPEDEF t_portrait_creepy]
+ON=@DClick
+   FLIP
+   SRC.SOUND 056a//howl
+   RETURN 1
+
+
+[TYPEDEF t_mailbox]
+//FIXME: Implement keys, secure locks, pickable locks, and traps.
+ON=@DropOn_Self
+   ID=<TAG.FullID>
+   UPDATE
+ON=@PickUp_Self
+   TIMERF 0,f_ResetMailboxFlag
+
+[FUNCTION f_ResetMailboxFlag]
+LOCAL.HasAnItem=0
+FORCONT <UID> 0
+   LOCAL.HasAnItem += 1
+ENDFOR
+IF (<LOCAL.HasAnItem>)
+   ID=<TAG.FullID>
+ELSE
+   ID=<TAG.EmptyID>
+ENDIF
+UPDATE
+
+//////////////////////////
+// Dungeon Chest Typedefs
+[TYPEDEF t_dungeon_chest]
+on=@click
+message <serv.itemdef.<dispid>.name>
+return 1
+
+on=@dclick //Activate the decay if chest is unlock
+if (<type>==t_container)
+   timer=180
+endif
+
+on=@spelleffect
+if (<argn1>==23) && ((<type>==t_container_locked) || (<isevent.t_container_locked>))
+  src.sysmessage You can not unlock this with that spell.
+  return 1
+endif
+
+[TYPEDEF t_trapped_container]
+//only can place traps on lockable boxes. not bags or doors.
+//damage varies on skill of the tinkerer
+//explosion traps do the most damage, grandmaster explosions traps will almost always kill the opener
+//poison traps administer level 5 poison, if not cured quickly the player will die
+//lesser explosion and poison traps are as effective as greater poison and explosion potions
+//telekinesis can be used on player trapped boxes
+
+//MOREX - trap type
+//MOREY - quality
+//LINK - uid of the player who trapped the container
+
+on=@dclick
+if (<type>!=t_container_locked) 	//don't fire if the container is locked and doesnt open
+  if (<src.distance <uid>> > 2) && (<src.action>==skill_magery) && (<src.actarg1>==21)	//using telekenisis
+    local.telekinesis=1
+  endif
+  args=<morep>
+  if (<morex>==1)	//dart trap
+    src.damage <qval <local.telekinesis>?0:<morey>> dam_physical <link>
+    src.effect 3,i_xbolt,6,15,1,0
+    src.sound 548
+  elseif (<morex>==3)	//poison trap
+    src.damage <qval <local.telekinesis>?0:<morey>> dam_poison <link>
+    src.effect 3,i_trap_gas,6,25,1,0
+    src.sound 560
+  elseif (<morex>==3)		//explosion trap
+    src.damage <qval <local.telekinesis>?0:<morey>> dam_fire <link>
+    src.effect 3,i_fx_explode,6,15,1,0
+    src.sound 283
+  endif
+  src.bark 3
+  message You set off a trap!
+  events=-t_trapped_container
+endif
+
+
+[TYPEDEF t_chicken_coop]
+// Used to raise fighting chickens!
+// FIXME: Not complete, do not use...
+ON=@DClick
+   IF !(<TAG0.StableOwner>)
+      TAG.StableOwner=<SRC>
+   ENDIF
+   RETURN 1
+ON=@ClientToolTip
+   IF (<TAG0.StableOwner>)
+      REF99=<EVAL <TAG.StableOwner>&~030000000>
+      addcliloc 1072304,<REF99.NAME>//"Owned by ~"
+   ENDIF
+   addcliloc 1071250,<dTAG0.StablesUsed>,<dTAG0.StablesMax>//"~/~ stable stalls used."
+ON=@ContextMenuRequest
+   IF (<TAG0.StableOwner>==<SRC>)
+      SRC.AddContextEntry 101,3006126//"Stable Pet"//1112556//"Stable a chicken"
+      SRC.AddContextEntry 102,3006181//"Summon your pet"//1112557//"Claim a chicken"
+   ENDIF
+ON=@ContextMenuSelect
+   IF (<TAG0.StableOwner>!=<SRC>)
+      SRC.SYSMESSAGELOC color_text,1113204//"The chickens stabled in this coop belong to someone else!"
+      RETURN 1
+   ENDIF
+   IF (<ARGN>==101)
+      IF (<dTAG0.StablesUsed> >= <dTAG0.StablesMax>)
+         SRC.SYSMESSAGELOC color_text,1114325//"There is no more room in your chicken coop!"
+         RETURN 1
+      ENDIF
+      //1112559//"Which chicken do you wish to stable?"
+      //1112558//"You may only stable chickens in the chicken coop"
+   ENDIF
+   IF (<ARGN>==102)
+      //1080048//"Select a pet to retrieve from the stable:"
+   ENDIF
+
+
+[TYPEDEF t_masonry_tool]
+[TYPEDEF t_glassblowing_tool]
+[TYPEDEF t_arcane_circle]
+[TYPEDEF t_weapon_throwing]//Throwing skill comes back to thrower
+[TYPEDEF t_weapon_thrown]//Throwing skill stays at target
+[TYPEDEF t_fletching]
+[TYPEDEF t_soulforge]
+
+[EOF]

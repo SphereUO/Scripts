@@ -1,0 +1,155 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+// SCRIPT CREDITS
+// Resources Generator
+// Author: Raylde
+//
+// Generate file with resources
+//
+// Generate:
+//	- Ore
+//	- Ingot
+//	- Leather
+//	- Logs
+
+
+[DEFNAME def_generator]
+// Quantity of resources to generate
+generator_resources_quantity = 17
+
+// resource to generate: NAME,ID,TYPE,COLOR
+// Types: 1 = ore, 2 = leather, 3 = logs
+//ores/ingot
+generator_resource_1 = dull copper,dull_copper,1,65.0
+generator_resource_2 = shadow,shadow,1,70.0
+generator_resource_3 = copper,copper,1,75.0
+generator_resource_4 = bronze,bronze,1,80.0
+generator_resource_5 = gold,gold,1,85.0
+generator_resource_6 = agapite,agapite,1,90.0
+generator_resource_7 = verite,verite,1,95.0
+generator_resource_8 = valorite,valorite,1,99.0
+//leather
+generator_resource_9 = spined,spined,2
+generator_resource_10 = horned,horned,2
+generator_resource_11 = barbed,barbed,2
+//wood
+generator_resource_12 = oak,oak,3
+generator_resource_13 = ash,ash,3
+generator_resource_14 = yew,yew,3
+generator_resource_15 = heartwood,heartwood,3
+generator_resource_16 = bloodwood,bloodwood,3
+generator_resource_17 = frostwood,frostwood,3
+
+[FUNCTION f_generator_files]
+SERV.LOG @Generator :: Starting generation scripts...
+
+//RESOURCES
+SERV.LOG @Generator :: Generating RESOURCES...
+LOCAL.AMOUNT = <DEF.generator_resources_quantity>
+FILE.DELETEFILE "scripts/add-on/generator/i_resources.scp"
+IF <FILE.OPEN "scripts/add-on/generator/i_resources.scp">
+	FOR 1 <LOCAL.AMOUNT>
+		IF (!<ISEMPTY <DEF.generator_resource_<dlocal._for>>>)
+			SERV.LOG @Generator :: Generating resource <DEF.generator_resource_<dlocal._for>>
+			f_generator_resource <DEF.generator_resource_<dlocal._for>>
+		ENDIF
+	ENDFOR
+
+	FILE.WRITELINE "[EOF]"
+	FILE.CLOSE
+ENDIF
+
+
+//Generate resource
+[FUNCTION f_generator_resource]
+LOCAL.NAME = <ARGV[0]>
+LOCAL.ID = <ARGV[1]>
+LOCAL.RESOURCE_TYPE = <ARGV[2]>
+LOCAL.SKILL = <ARGV[3]>
+
+IF (<DLOCAL.RESOURCE_TYPE> == 1) //Ingot
+	FILE.WRITELINE "[ITEMDEF i_ore_<LOCAL.ID>]"
+	FILE.WRITELINE "ID=i_ore_iron"
+	FILE.WRITELINE "NAME=<LOCAL.NAME> ore"
+	FILE.WRITELINE "SKILLMAKE=MINING <LOCAL.SKILL>"
+	FILE.WRITELINE "TDATA1=i_ingot_<LOCAL.ID>"
+	FILE.WRITELINE "VALUE=15"
+	FILE.WRITELINE " "
+	FILE.WRITELINE "CATEGORY=RESOURCES"
+	FILE.WRITELINE "SUBSECTION=MINING"
+	FILE.WRITELINE "DESCRIPTION=<LOCAL.NAME> ore"
+	FILE.WRITELINE " "
+	FILE.WRITELINE "ON=@CREATE"
+	FILE.WRITELINE "   COLOR=color_o_<LOCAL.ID>"
+	FILE.WRITELINE " "
+	FILE.WRITELINE " "
+	FILE.WRITELINE "[ITEMDEF i_ingot_<LOCAL.ID>]"
+	FILE.WRITELINE "ID=i_ingot_iron"
+	FILE.WRITELINE "NAME=<LOCAL.NAME> ingot"
+	FILE.WRITELINE "RESOURCES=i_ore_<LOCAL.ID>"
+	FILE.WRITELINE "SKILLMAKE=MINING <LOCAL.SKILL>"
+	FILE.WRITELINE " "
+	FILE.WRITELINE "TDATA1=80.0"
+	FILE.WRITELINE "TDATA2=100.0"
+	FILE.WRITELINE " "
+	FILE.WRITELINE "CATEGORY=RESOURCES"
+	FILE.WRITELINE "SUBSECTION=MINING"
+	FILE.WRITELINE "DESCRIPTION=<LOCAL.NAME> ingot"
+	FILE.WRITELINE " "
+	FILE.WRITELINE "ON=@CREATE"
+	FILE.WRITELINE "   COLOR=color_o_<LOCAL.ID>"
+	FILE.WRITELINE " "
+	FILE.WRITELINE " "
+ELIF (<DLOCAL.RESOURCE_TYPE> == 2) //Leather
+	FILE.WRITELINE "[ITEMDEF i_hide_<LOCAL.ID>]"
+	FILE.WRITELINE "ID=i_hide"
+	FILE.WRITELINE "NAME=<LOCAL.NAME> hide%s"
+	FILE.WRITELINE "TYPE=t_hide"
+	FILE.WRITELINE "TDATA1=i_hides_cut_barbed"
+	FILE.WRITELINE "VALUE=5"
+	FILE.WRITELINE "WEIGHT=2.0"
+	FILE.WRITELINE " "
+	FILE.WRITELINE "CATEGORY=RESOURCES"
+	FILE.WRITELINE "SUBSECTION=Leather"
+	FILE.WRITELINE "DESCRIPTION=<LOCAL.NAME> Hides"
+	FILE.WRITELINE " "
+	FILE.WRITELINE "ON=@CREATE"
+	FILE.WRITELINE "   COLOR=color_hide_<LOCAL.ID>"
+	FILE.WRITELINE " "
+	FILE.WRITELINE "[ITEMDEF i_hides_cut_<LOCAL.ID>]"
+	FILE.WRITELINE "ID=i_hides_cut"
+	FILE.WRITELINE "NAME=<LOCAL.NAME> cut up leather%s"
+	FILE.WRITELINE "TYPE=t_leather"
+	FILE.WRITELINE "VALUE=5"
+	FILE.WRITELINE "WEIGHT=1.0"
+	FILE.WRITELINE "RESOURCES=1 i_hide_<LOCAL.ID>"
+	FILE.WRITELINE " "
+	FILE.WRITELINE "CATEGORY=RESOURCES"
+	FILE.WRITELINE "SUBSECTION=Leather"
+	FILE.WRITELINE "DESCRIPTION=<LOCAL.NAME> Cut-up Leather"
+	FILE.WRITELINE " "
+	FILE.WRITELINE "ON=@CREATE"
+	FILE.WRITELINE "   COLOR=color_hide_<LOCAL.ID>"
+	FILE.WRITELINE " "
+	FILE.WRITELINE " "
+ELIF (<DLOCAL.RESOURCE_TYPE> == 3) //Logs
+	FILE.WRITELINE "[ITEMDEF i_log_<LOCAL.ID>]"
+	FILE.WRITELINE "ID=i_log"
+	FILE.WRITELINE "NAME=<LOCAL.NAME> log%s"
+	FILE.WRITELINE "TYPE=t_log"
+	FILE.WRITELINE " "
+	FILE.WRITELINE "CATEGORY=RESOURCES"
+	FILE.WRITELINE "SUBSECTION=Wood"
+	FILE.WRITELINE "DESCRIPTION=<LOCAL.NAME> log"
+	FILE.WRITELINE " "
+	FILE.WRITELINE "ON=@CREATE"
+	FILE.WRITELINE "   COLOR=color_log_<LOCAL.ID>"
+	FILE.WRITELINE " "
+	FILE.WRITELINE " "
+ENDIF
+
+[EOF]

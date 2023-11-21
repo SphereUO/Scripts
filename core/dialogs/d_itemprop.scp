@@ -1,0 +1,429 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[DIALOG d_itemprop1]
+50,50
+
+page 0
+resizepic 0 0 5054 605 345
+gumppictiled 3 3 599 339 2604
+
+gumppictiled 6 6 593 22 2624
+gumppictiled 6 32 480 306 2624
+
+gumppictiled 490 35 109 100 2624
+gumppictiled 490 140 109 197 2624
+checkertrans 3 3 599 338
+dhtmlgump 10 10 585 19 0 0 <DEF.BFONT_WHITE><DEF.CENTER>ITEM PROPERTIES<DEF.CENTERE><DEF.BFONTE>
+tilepichue 525 70 <DISPIDDEC> <dCOLOR>
+
+button 490 140 4017 4019 1 0 1
+dtext 525 140 137 DELETE
+
+page 1
+
+button 490 180 4026 4028 0 1 0
+dtext 525 180 193 General
+button 490 200 4026 4028 0 2 0
+dtext 525 200 1000 PROPS
+
+button 10 35 4005 4007 1 0 100
+dtext 45 35 0c1 Amount
+dcroppedtext 120 35 125 20 1000 <AMOUNT>
+
+button 10 55 4005 4007 1 0 101
+dtext 45 55 0c1 Attr
+dcroppedtext 120 55 125 20 1000 <ATTR>
+
+button 10 75 4005 4007 1 0 106
+dtext 45 75 0c1 More1
+dcroppedtext 120 75 125 20 1000 <MORE1> <QVAL (<MORE1>)? (<MORE1L>/<MORE1H>):>
+
+button 10 95 4005 4007 1 0 107
+dtext 45 95 0c1 More2
+dcroppedtext 120 95 125 20 1000 <MORE2> <QVAL (<MORE2>)? (<MORE2L>/<MORE2H>):>
+
+button 10 115 4005 4007 1 0 108
+dtext 45 115 0c1 MoreP
+dcroppedtext 120 115 125 20 1000 <MOREP>
+
+button 10 135 4020 4022 0 1 0
+dtext 45 135 0c1 Dye
+dcroppedtext 120 135 125 20 1000 <DYE>
+
+button 10 155 4020 4022 0 1 0
+dtext 45 155 0c1 Instances
+dcroppedtext 120 155 125 20 1000 <INSTANCES>
+
+button 10 175 4020 4022 0 1 0
+dtext 45 175 0c1 Layer
+dcroppedtext 120 175 125 20 1000 <LAYER>
+
+button 10 195 4005 4007 1 0 105
+dtext 45 195 0c1 Link
+dcroppedtext 120 195 125 20 1000 <QVAL <LINK.ISVALID> ? (<LINK.NAME>):-1>
+
+button 10 215 4005 4007 1 0 102
+dtext 45 215 0c1 BaseID
+dcroppedtext 120 215 500 20 1000 <BASEID>
+
+button 10 235 4005 4007 1 0 103
+dtext 45 235 0c1 Color
+dcroppedtext 120 235 125 20 1000 <COLOR>
+
+button 10 255 4005 4007 1 0 104
+dtext 45 255 0c1 DispID
+dcroppedtext 120 255 500 20 1000 <DISPID>
+
+button 10 275 4005 4007 1 0 109
+dtext 45 275 0c1 Name
+dcroppedtext 120 275 500 20 1000 <NAME>
+
+button 10 295 <QVAL (<CONT>)? 4020 4022 0 1 0 : 4005 4007 1 0 110>
+dtext 45 295 0c1 P
+dcroppedtext 120 295 125 20 1000 <QVAL (<CONT>)? <TOPOBJ.P> : <P>>
+
+button 10 315 4005 4007 1 0 111
+dtext 45 315 0c1 Timer
+dcroppedtext 120 315 125 20 1000 <TIMER>
+
+button 250 35 4005 4007 1 0 112
+dtext 285 35 0c1 Type
+dcroppedtext 360 35 125 20 1000 <TYPE>
+
+button 250 55 4020 4022 0 1 0
+dtext 285 55 0c1 UID
+dcroppedtext 360 55 125 20 1000 <UID>
+
+button 250 75 4020 4022 0 1 0
+dtext 285 75 0c1 Value
+dcroppedtext 360 75 125 20 1000 <VALUE>
+
+button 250 95 4020 4022 0 1 0
+dtext 285 95 0c1 Weight
+
+IF (<AMOUNT> > 1)
+ ARGS = "(<fval <BASEWEIGHT>> x <AMOUNT>)"
+ELIF (<WEIGHT> != <BASEWEIGHT>)
+ ARGS = "(<fval <BASEWEIGHT>> + <fval <WEIGHT>-<BASEWEIGHT>>)"
+ENDIF
+dcroppedtext 360 95 125 20 1000 <fval <WEIGHT>> <ARGS>
+
+IF (<ISARMOR>)
+	dtext 250 135 193 Property of armor
+
+	IF (<SERV.CombatFlags> & 08)	//COMBATF_ELEMENTAL_ENGINE
+		button 250 155 4005 4007 1 0 120
+		dtext 285 155 903 ResPhysical
+		dcroppedtext 360 155 125 20 1000 <RESPHYSICAL>%
+
+		button 250 175 4005 4007 1 0 121
+		dtext 285 175 333 ResFire
+		dcroppedtext 360 175 125 20 1000 <RESFIRE>%
+
+		button 250 195 4005 4007 1 0 122
+		dtext 285 195 393 ResCold
+		dcroppedtext 360 195 125 20 1000 <RESCOLD>%
+
+		button 250 215 4005 4007 1 0 123
+		dtext 285 215 363 ResPoison
+		dcroppedtext 360 215 125 20 1000 <RESPOISON>%
+
+		button 250 235 4005 4007 1 0 124
+		dtext 285 235 323 ResEnergy
+		dcroppedtext 360 235 125 20 1000 <RESENERGY>%
+	ELSE
+		button 250 155 4005 4007 1 0 125
+		dtext 285 155 0c1 Armor
+		dcroppedtext 360 155 125 20 1000 <ARMOR>
+
+		button 250 175 4005 4007 1 0 126
+		dtext 285 175 0c1 ModAR
+		dcroppedtext 360 175 125 20 1000 <MODAR>
+	ENDIF
+ENDIF
+
+IF (<ISWEAPON>)
+	dtext 250 135 193 Property of weapon
+
+	button 250 155 4005 4007 1 0 130
+	dtext 285 155 0c1 Range
+	dcroppedtext 360 155 125 20 1000 <RANGE>
+
+	button 250 175 4020 4022 0 0 0
+	dtext 285 175 0c1 Speed
+	dcroppedtext 360 175 125 20 1000 <SPEED>
+
+	button 250 195 4005 4007 1 0 131
+	dtext 285 195 0c1 Dam
+	dcroppedtext 360 195 125 20 1000 <DAM>
+
+	IF (<SERV.CombatFlags> & 08)	//COMBATF_ELEMENTAL_ENGINE
+		button 250 215 4005 4007 1 0 132
+		dtext 285 215 903 DamPhysical
+		dcroppedtext 360 215 125 20 1000 <DAMPHYSICAL>%
+
+		button 250 235 4005 4007 1 0 133
+		dtext 285 235 333 DamFire
+		dcroppedtext 360 235 125 20 1000 <DAMFIRE>%
+
+		button 250 255 4005 4007 1 0 134
+		dtext 285 255 393 DamCold
+		dcroppedtext 360 255 125 20 1000 <DAMCOLD>%
+
+		button 250 275 4005 4007 1 0 135
+		dtext 285 275 363 DamPoison
+		dcroppedtext 360 275 125 20 1000 <DAMPOISON>%
+
+		button 250 295 4005 4007 1 0 136
+		dtext 285 295 323 DamEnergy
+		dcroppedtext 360 295 125 20 1000 <DAMENERGY>%
+	ENDIF
+ENDIF
+
+page 2 //Props
+button 490 180 4026 4028 0 1 0
+dtext 525 180 1000 General
+button 490 200 4026 4028 0 2 0
+dtext 525 200 193 PROPS
+
+checkbox 15 40 210 211 <QVAL <EVAL <SRC.TARG.ATTR>&01 > 0 ? 1:0> 0 // Identified
+dtext 45 40 995 Identified
+checkbox 15 60 210 211 <QVAL <EVAL <SRC.TARG.ATTR>&02 > 0 ? 1:0> 1 // Decay
+dtext 45 60 995 Decay
+checkbox 15 80 210 211 <QVAL <EVAL <SRC.TARG.ATTR>&04 > 0 ? 1:0> 2 // Newbie
+dtext 45 80 995 Newbie
+checkbox 15 100 210 211 <QVAL <EVAL <SRC.TARG.ATTR>&08 > 0 ? 1:0> 3 // Always Moveable
+dtext 45 100 995 Always Moveable
+checkbox 15 120 210 211 <QVAL <EVAL <SRC.TARG.ATTR>&010 > 0 ? 1:0> 4 // Never Moveable
+dtext 45 120 995 Never Moveable
+checkbox 15 140 210 211 <QVAL <EVAL <SRC.TARG.ATTR>&020 > 0 ? 1:0> 5 // Magic
+dtext 45 140 995 Magic
+checkbox 15 160 210 211 <QVAL <EVAL <SRC.TARG.ATTR>&040 > 0 ? 1:0> 6 // Town Owned
+dtext 45 160 995 Town Owned
+checkbox 15 180 210 211 <QVAL <EVAL <SRC.TARG.ATTR>&080 > 0 ? 1:0> 7 // Invisible
+dtext 45 180 995 Invisible
+checkbox 15 200 210 211 <QVAL <EVAL <SRC.TARG.ATTR>&0100 > 0 ? 1:0> 8 // Cursed
+dtext 45 200 995 Cursed
+checkbox 15 220 210 211 <QVAL <EVAL <SRC.TARG.ATTR>&0200 > 0 ? 1:0> 9 // Damned
+dtext 45 220 995 Damned
+checkbox 15 240 210 211 <QVAL <EVAL <SRC.TARG.ATTR>&0400 > 0 ? 1:0> 10 // Blessed
+dtext 45 240 995 Blessed
+checkbox 15 260 210 211 <QVAL <EVAL <SRC.TARG.ATTR>&0800 > 0 ? 1:0> 11 // Sacred
+dtext 45 260 995 Sacred
+checkbox 15 280 210 211 <QVAL <EVAL <SRC.TARG.ATTR>&01000 > 0 ? 1:0> 12 // For Sale
+dtext 45 280 995 For Sale
+checkbox 15 300 210 211 <QVAL <EVAL <SRC.TARG.ATTR>&02000 > 0 ? 1:0> 13 // Stolen
+dtext 45 300 995 Stolen
+checkbox 215 40 210 211 <QVAL <EVAL <SRC.TARG.ATTR>&04000 > 0 ? 1:0> 14 // Can Decay
+dtext 245 40 995 Can Decay
+checkbox 215 60 210 211 <QVAL <EVAL <SRC.TARG.ATTR>&08000 > 0 ? 1:0> 15 // Static
+dtext 245 60 995 Static
+checkbox 215 80 210 211 <QVAL <EVAL <SRC.TARG.ATTR>&080000000 > 0 ? 1:0> 16 // CanUse Paralyse
+dtext 245 80 995 Canuse Paralyzed
+checkbox 215 100 210 211 <QVAL <EVAL <SRC.TARG.ATTR>&080000	 > 0 ? 1:0> 17 // Quest Item
+dtext 245 100 995 Quest Item
+checkbox 215 120 210 211 <QVAL <EVAL <SRC.TARG.ATTR>&0400000000000	 > 0 ? 1:0> 18 // Cannot repair
+dtext 245 120 995 Cannot Repair
+button 350 295 4005 4007 1 0 999
+dtext 385 295 0c1 APPLY
+
+
+[DIALOG d_itemprop1 BUTTON]
+ON=1
+TRYP 4 REMOVE
+
+ON=100
+TRYP 4 INPDLG AMOUNT 5
+
+ON=101
+TRYP 4 INPDLG ATTR 9
+
+ON=102
+TRYP 4 INPDLG ID 30
+
+ON=103
+TRYP 4 INPDLG COLOR 16
+
+ON=104
+TRYP 4 INPDLG DISPID 30
+
+ON=105
+TRYP 4 INPDLG LINK 10
+
+ON=106
+TRYP 4 INPDLG MORE1 32
+
+ON=107
+TRYP 4 INPDLG MORE2 32
+
+ON=108
+TRYP 4 INPDLG MOREP 16
+
+ON=109
+TRYP 4 INPDLG NAME 30
+
+ON=110
+IF !(<CONT>)
+ TRYP 4 INPDLG P 16
+ENDIF
+
+ON=111
+TRYP 4 INPDLG TIMER 9
+
+ON=112
+TRYP 4 INPDLG TYPE 30
+
+ON=120
+TRYP 4 INPDLG RESPHYSICAL 4
+
+ON=121
+TRYP 4 INPDLG RESFIRE 4
+
+ON=122
+TRYP 4 INPDLG RESCOLD 4
+
+ON=123
+TRYP 4 INPDLG RESPOISON 4
+
+ON=124
+TRYP 4 INPDLG RESENERGY 4
+
+ON=125
+TRYP 4 INPDLG ARMOR 9
+
+ON=126
+TRYP 4 INPDLG MODAR 3
+
+ON=130
+TRYP 4 INPDLG RANGE 2
+
+ON=131
+TRYP 4 INPDLG DAM 9
+
+ON=132
+TRYP 4 INPDLG DAMPHYSICAL 4
+
+ON=133
+TRYP 4 INPDLG DAMFIRE 4
+
+ON=134
+TRYP 4 INPDLG DAMCOLD 4
+
+ON=135
+TRYP 4 INPDLG DAMPOISON 4
+
+ON=136
+TRYP 4 INPDLG DAMENERGY 4
+
+ON=999 //Apply props
+IF (<eval <SRC.ACCOUNT.PLEVEL>><4)
+	SRC.SYSMESSAGE="You are not privileged enough to do that."
+	RETURN 1
+ENDIF
+
+IF (<ARGCHK[0]>)
+	SRC.TARG.ATTR |= 01
+ELSE
+	SRC.TARG.ATTR &=~01
+ENDIF
+IF (<ARGCHK[1]>)
+	SRC.TARG.ATTR |= 02
+ELSE
+	SRC.TARG.ATTR &=~ 02
+ENDIF
+IF (<ARGCHK[2]>)
+	SRC.TARG.ATTR |= 4
+ELSE
+	SRC.TARG.ATTR &=~ 04
+ENDIF
+IF (<ARGCHK[3]>)
+	SRC.TARG.ATTR |= 08
+ELSE
+	SRC.TARG.ATTR &=~ 08
+ENDIF
+IF (<ARGCHK[4]>)
+	SRC.TARG.ATTR |= 010
+ELSE
+	SRC.TARG.ATTR &=~ 010
+ENDIF
+IF (<ARGCHK[5]>)
+	SRC.TARG.ATTR |= 020
+ELSE
+	SRC.TARG.ATTR &=~ 020
+ENDIF
+IF (<ARGCHK[6]>)
+	SRC.TARG.ATTR |= 040
+ELSE
+	SRC.TARG.ATTR &=~ 040
+ENDIF
+IF (<ARGCHK[7]>)
+	SRC.TARG.ATTR |= 080
+ELSE
+	SRC.TARG.ATTR &=~ 080
+ENDIF
+IF (<ARGCHK[8]>)
+	SRC.TARG.ATTR |= 0100
+ELSE
+	SRC.TARG.ATTR &=~ 0100
+ENDIF
+IF (<ARGCHK[9]>)
+	SRC.TARG.ATTR |= 0200
+ELSE
+	SRC.TARG.ATTR &=~ 0200
+ENDIF
+IF (<ARGCHK[10]>)
+	SRC.TARG.ATTR |= 0400
+ELSE
+	SRC.TARG.ATTR &=~ 0400
+ENDIF
+IF (<ARGCHK[11]>)
+	SRC.TARG.ATTR |= 0800
+ELSE
+	SRC.TARG.ATTR &=~ 0800
+ENDIF
+IF (<ARGCHK[12]>)
+	SRC.TARG.ATTR |= 01000
+ELSE
+	SRC.TARG.ATTR &=~ 01000
+ENDIF
+IF (<ARGCHK[13]>)
+	SRC.TARG.ATTR |= 02000
+ELSE
+	SRC.TARG.ATTR &=~ 02000
+ENDIF
+IF (<ARGCHK[14]>)
+	SRC.TARG.ATTR |= 04000
+ELSE
+	SRC.TARG.ATTR &=~ 04000
+ENDIF
+IF (<ARGCHK[15]>)
+	SRC.TARG.ATTR |= 08000
+ELSE
+	SRC.TARG.ATTR &=~ 08000
+ENDIF
+IF (<ARGCHK[16]>)
+	SRC.TARG.ATTR |= 080000000 
+ELSE
+	SRC.TARG.ATTR &=~ 080000000 
+ENDIF
+IF (<ARGCHK[17]>)
+	SRC.TARG.ATTR |= 080000
+ELSE
+	SRC.TARG.ATTR &=~ 080000
+ENDIF
+IF (<ARGCHK[18]>)
+	SRC.TARG.ATTR |= 0400000000000
+ELSE
+	SRC.TARG.ATTR &=~ 0400000000000
+ENDIF
+SRC.TARG.UPDATE
+
+SRC.sysmessage Modification made to <SRC.TARG.name>
+DIALOG d_itemprop1 2
+
+
+[EOF]

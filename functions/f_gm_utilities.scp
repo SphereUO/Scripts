@@ -1,0 +1,106 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[FUNCTION t]	// A better teleporting command than .tele.
+TARGETFG t_sub
+
+[FUNCTION t_sub]
+IF (<ARGO>)
+	GO <ARGO.P>
+ELSEIF (<TARGP>)
+	GO <TARGP>
+ELSE
+	SYSMESSAGE Target not valid
+ENDIF
+TARGETFG t_sub
+
+[FUNCTION sm]	// Staff message. Talk via sysmessages with other Game Masters (starting from PLEVEL 2).
+IF (<ISEMPTY <ARGS>>)
+	SYSMESSAGE Syntax: .sm [text]
+	RETURN 1
+ENDIF
+LOCAL.NAME=<NAME>
+FOR (<SERV.CLIENTS>)
+	IF (<SERV.CLIENT.<EVAL <LOCAL._FOR>-1>.ACCOUNT.PLEVEL>>1)
+		REF1=<SERV.CLIENT.<EVAL <LOCAL._FOR>-1>.UID>
+		REF1.SYSMESSAGE @<TAG0.NAME.HUE> <LOCAL.NAME>: <ARGS>
+	ENDIF
+ENDFOR
+
+//Function for reinitialise all NPC spawn point
+[FUNCTION f_resetAllSpawnNPC]
+SRC.SYSMESSAGE @032 REINITIALISATION OF SPAWNS ...
+local.servertick=<serv.rticks>
+forinstances i_worldgem_bit
+	IF (<type> == t_spawn_char)
+		reset //reset the spawn equivalent of a dclick
+		timer=1
+		local.count ++
+	endif
+endfor
+SRC.SYSMESSAGE @032 <EVAL <local.count>> Spawn of NPC reset in <EVAL <serv.rticks>-<dlocal.servertick>> secs
+
+//Function for reinitialise all ITEM spawn point
+[FUNCTION f_resetAllSpawnItem]
+SRC.SYSMESSAGE @032 REINITIALISATION OF SPAWNS ...
+local.servertick=<serv.rticks>
+forinstances i_worldgem_bit
+	IF (<type> == t_spawn_item)
+		reset //reset the spawn equivalent of a dclick
+		timer=1
+		local.count ++
+	endif
+endfor
+SRC.SYSMESSAGE @032 <EVAL <local.count>> Spawn of ITEM reset in <EVAL <serv.rticks>-<dlocal.servertick>> secs
+
+[FUNCTION f_remove_all_npcs]	//removes all npcs that are not invul, or owned
+local.p=<P>
+p=1,1,1,0
+update
+for 0 5
+  p=1,1,1,<dlocal._for>
+  forchars 10000
+    if (<npc>)
+      if !(<owner>) && !(<flags>&statf_invul)
+        remove
+      else
+        serv.log Can't remove <name>. (<qval (<owner.isvalid>)?<owner.name>:Nobody> owns it and it's <qval <flags>&statf_invul?Invulneralbe: Not Invulnerable>)
+      endif
+  endfor
+endfor
+p=<local.p>
+update
+sysmessage @026 All NPCs removed
+
+[FUNCTION f_kill_all_npcs]
+local.p=<P>
+p=1,1,1,0
+update
+for 0 5
+p=1,1,1,<dlocal._for>
+  forchars 10000
+    if (<npc>)
+      if !(<owner>) && !(<flags>&statf_invul)
+        hits=0
+      else
+        serv.log Can't kill <name> (<owner.name> owns it and it's <qval <flags>&statf_invul?Invulneralbe: Not Invulnerable>)
+      endif
+  endfor
+  //f_remove_all_corpses
+endfor
+p=<local.p>
+update
+sysmessage @026 All NPCs killed
+
+[FUNCTION f_remove_all_corpses]
+foritems 9999
+  if (<type>==t_corpse)
+    timer=1
+  endif
+endfor
+
+
+[EOF]

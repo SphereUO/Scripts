@@ -1,0 +1,10 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[EVENTS e_player_generic_event]
+//Generic event to all players
+
+[EOF]

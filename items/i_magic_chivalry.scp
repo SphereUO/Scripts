@@ -1,0 +1,40 @@
+﻿//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[ITEMDEF 02252]
+DEFNAME=i_spellbook_chivalry
+NAME=Book of Chivalry
+TYPE=t_spellbook_pala
+TDATA3=200
+TDATA4=10
+VALUE=122
+WEIGHT=3.0
+CATEGORY=Provisions - Alchemy & Magic
+SUBSECTION=Books
+DESCRIPTION=Book of Chivalry
+ON=@Create
+   ATTR=attr_magic|attr_newbie
+   MORE1=03ff
+
+
+[ITEMDEF 0227c]
+DEFNAME=i_scroll_cleanse_by_fire
+TYPE=t_scroll
+VALUE=25
+WEIGHT=0.1
+RESOURCES=1 i_scroll_blank
+SKILLMAKE=Inscription 30.0,Chivalry 5.0
+CATEGORY=Provisions - Alchemy & Magic
+SUBSECTION=Scrolls - Chivalry
+DESCRIPTION=Cleanse by Fire
+ON=@Create
+   ATTR=attr_magic
+   MOREX=s_cleanse_by_fire
+   //MOREY={10 20}
+
+
+
+[EOF]

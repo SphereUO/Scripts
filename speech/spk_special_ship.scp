@@ -1,0 +1,75 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[SPEECH spk_ship_cmds]
+on=set name *
+	// changes ship name, where *=name.
+	// name=<strmid(<args>,8,64)>
+
+on=furl sail	// stop
+on=stop			// stops current ship movement.
+	shipstop
+
+on=turn left
+on=port			// turn left
+	shipturnleft
+
+on=turn right
+on=starboard	// turn right
+	shipturnright
+
+on=left			// move ship in desired direction.
+on=drift left
+	shipdriftleft
+
+on=right		// move ship in desired direction.
+on=drift right
+	shipdriftright
+
+on=back			// move ship backwards
+on=backward		// move ship backwards
+on=backwards	// move ship backwards
+	shipback
+
+on=forward
+on=foreward		// moves ship forward.
+on=unfurl sail	// moves ship forward.
+	shipfore
+
+on=forward left
+	shipforeleft
+
+on=forward right
+	shipforeright
+
+on=backward left
+on=back left
+	shipbackleft
+
+on=backward right
+on=back right
+	shipbackright
+
+on=raise anchor
+	shipanchorraise
+
+on=drop anchor
+	shipanchordrop
+
+on=turn around	// turns ship around and proceeds.
+on=come about	// turns ship around and proceeds.
+	shipturn
+
+on=up
+	shipup
+
+on=down
+	shipdown
+
+on=land
+	shipland
+
+[EOF]

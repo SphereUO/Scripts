@@ -1,0 +1,29 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[SKILL 37]
+DEFNAME=Skill_Tinkering
+KEY=Tinkering
+TITLE=Tinker
+FLAGS=skf_craft
+DELAY=1.2		//Old value=3.0
+STAT_STR=30
+STAT_DEX=50
+STAT_INT=100
+BONUS_STR=20
+BONUS_DEX=20
+BONUS_INT=60
+BONUS_STATS=10
+ADV_RATE=2.5,50.0,200.0
+VALUES=1,20,80
+
+ON=@Fail
+	SRC.SYSMESSAGE Tinkering failed.
+
+ON=@Abort
+	SRC.SYSMESSAGE You stop trying to make anything.
+
+[EOF]

@@ -1,0 +1,19 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[SPEECH spk_orc]
+// Orc speech
+DEFAULT=Uhhh?
+ON=Bwuzargh
+	SAY=Gruu!
+
+ON=Hi
+ON=Greet
+ON=Hello
+ON=Hail
+	SAY=Uh!
+
+[EOF]

@@ -1,0 +1,176 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[ITEMDEF 027ac]
+//This item is not equiped, it is thrown
+//Like the Fukiya, anyone can use it when they have one hand free
+//To use Shuriken, a Leather Ninja Belt must be worn or within backpack.
+DEFNAME=i_shuriken
+NAME=shuriken
+TYPE=t_ninja_shuriken
+FLIP=1
+VALUE=6
+WEIGHT=1.0
+RESOURCES=1 i_ingot_iron
+SKILLMAKE=Blacksmithing 45.0
+CATEGORY=Provisions - Weapons
+SUBSECTION=Thrown
+DESCRIPTION=Shuriken
+DUPELIST=027f7
+Expansion=RDS_SE
+
+[ITEMDEF 027f7]
+//shuriken
+DUPEITEM=027ac
+
+[ITEMDEF 02808]
+//This weapon is not equiped, it is thrown
+DEFNAME=i_bomb_smoke
+NAME=smoke bomb
+TYPE=t_weapon_thrown//fixme:t_smokebomb
+VALUE=7
+WEIGHT=0.7
+RESOURCES=6 i_reag_grave_dust,1 i_eggs_fresh
+SKILLMAKE=Alchemy 95.1
+CATEGORY=Provisions - Weapons
+SUBSECTION=Thrown
+DESCRIPTION=Smoke Bomb
+
+[ITEMDEF 02809]
+//This weapon is not equiped, it is thrown
+DEFNAME=i_bomb_egg
+NAME=egg bomb
+TYPE=t_weapon_thrown//fixme:t_egg_bomb
+VALUE=7
+WEIGHT=0.7
+RESOURCES=6 i_reag_grave_dust,1 i_eggs_fresh
+SKILLMAKE=Alchemy 95.1
+CATEGORY=Provisions - Weapons
+SUBSECTION=Thrown
+DESCRIPTION=Egg Bomb
+
+
+///////////////////////////////////////////////////////////////
+//////// WILD STAVES
+///////////////////////////////////////////////////////////////
+
+
+[ITEMDEF i_staff_wild_ancient]
+ID=i_staff_wild
+NAME=ancient wild staff
+RESOURCES=16 i_log, 1 i_gem_perfect_emerald
+SKILLMAKE=CARPENTRY 63.8, t_carpentry
+TEVENTS=ei_equipitem
+CATEGORY=Provisions - Weapons - MaceFighting
+SUBSECTION=Wild Staves
+DESCRIPTION=Ancient Wild Staff
+DUPELIST=02d31
+Expansion=RDS_ML
+ON=@CREATE
+COLOR=0 //FIXME: unknown color
+HITPOINTS={36 48}
+   RESPOISON=5
+
+[ITEMDEF i_staff_wild_arcanist]
+ID=i_staff_wild
+NAME=arcanist wild staff
+RESOURCES=16 i_log, 1 i_gem_white_pearl
+SKILLMAKE=CARPENTRY 63.8, t_carpentry
+TEVENTS=ei_equipitem
+CATEGORY=Provisions - Weapons - MaceFighting
+SUBSECTION=Wild Staves
+DESCRIPTION=Arcanist's Wild Staff
+DUPELIST=02d31
+Expansion=RDS_ML
+ON=@CREATE
+COLOR=0 //FIXME: unknown color
+HITPOINTS={36 48}
+   BonusManaMax=3
+   IncreaseDam=3
+
+[ITEMDEF i_staff_wild_hardened]
+ID=i_staff_wild
+NAME=hardened wild staff
+RESOURCES=16 i_log, 1 i_gem_turquoise
+SKILLMAKE=Carpentry 63.8, t_carpentry
+TEVENTS=ei_equipitem
+CATEGORY=Provisions - Weapons - MaceFighting
+SUBSECTION=Wild Staves
+DESCRIPTION=Hardened Wild Staff
+DUPELIST=02d31
+Expansion=RDS_ML
+ON=@CREATE
+COLOR=0 //FIXME: unknown color
+HITPOINTS={36 48}
+   IncreaseDam=5
+
+[ITEMDEF i_staff_phantom]
+ID=i_staff_wild
+NAME=phantom staff
+RESOURCES=16 i_log, 10 i_ingredient_putrefaction, 10 i_ingredient_taint, 1 i_ingredient_diseased_bark
+SKILLMAKE=Carpentry 90.0, t_carpentry
+TEVENTS=ei_equipitem
+
+CATEGORY=Provisions - Weapons - MaceFighting
+SUBSECTION=Wild Staves
+DESCRIPTION=Phantom Staff
+DUPELIST=02d31
+Expansion=RDS_ML
+ON=@CREATE
+COLOR=01
+HITPOINTS=255
+   RegenHits=2
+   NightSight=1
+   IncreaseSwingSpeed=20
+   IncreaseDam=60
+   DamCold=50
+   DamPoison=50
+
+[ITEMDEF i_staff_wild_thorned]
+ID=i_staff_wild
+NAME=thorned wild staff
+RESOURCES=16 i_log, 1 i_gem_fire_ruby
+SKILLMAKE=Carpentry 63.8, t_carpentry
+TEVENTS=ei_equipitem
+ReflectPhysicalDam=12
+CATEGORY=Provisions - Weapons - MaceFighting
+SUBSECTION=Wild Staves
+DESCRIPTION=Thorned Wild Staff
+DUPELIST=02d31
+Expansion=RDS_ML
+ON=@CREATE
+COLOR=0 //FIXME: unknown color
+HITPOINTS={36 48}
+
+///////////////////////////////////////////////////////////////
+//////// BOLAS
+///////////////////////////////////////////////////////////////
+[ITEMDEF 026ac]
+DEFNAME=i_bola
+NAME=bola
+TYPE=t_bola
+WEIGHT=4.0
+SKILLMAKE=Tinkering 60.0, t_tinker_tools
+RESOURCES=4 i_bola_ball, 3 i_hides_cut
+CATEGORY=Provisions - Weapons - Throwing
+SUBSECTION=Bolas
+DESCRIPTION=Bola
+
+[ITEMDEF i_bola_ball]
+//The bola ball is used to craft a bola, is is not actually ammunition
+ID=i_cannon_ball
+NAME=bola ball%s
+TYPE=t_normal
+WEIGHT=4.0
+SKILLMAKE=Tinkering 45.0, t_tinker_tools
+RESOURCES=10 i_ingot_iron
+CATEGORY=Provisions - Weapons - Throwing
+SUBSECTION=Bolas
+DESCRIPTION=Bola Ball
+ON=@CREATE
+COLOR=08ac
+
+[EOF]

@@ -1,0 +1,30 @@
+﻿//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[EVENTS e_Carnivores]
+// weak carnivores.
+
+[EVENTS e_Carnivores2]
+// normal carnivores.
+
+[EVENTS e_Carnivores3]
+// strong carnivores.
+
+[EVENTS e_Terathan]
+
+[EVENTS e_Ophidian]
+
+[EVENTS e_Horses]
+
+[EVENTS e_Notoriety]
+
+[EVENTS e_Ostards]
+
+[EVENTS e_Minotaurs]
+
+
+
+[EOF]

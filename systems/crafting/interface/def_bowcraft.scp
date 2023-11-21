@@ -1,0 +1,107 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+// SCRIPT DOCUMENTATION
+// --------------------
+// Based on EA crafting lists
+
+[DEFNAME sphere_crafting_bowcraft_default]
+bowcraft_marking		"1" // 1 or 0
+bowcraft_firstmaterial	"1" // 1 or 0
+bowcraft_secondmaterial	"0" // 1 or 0
+bowcraft_options_default	"1,1,0,0,0" //"mark,exceptional,colored,recipe,expansion"
+
+bowcraft_resourceid				"i_log" //default material
+bowcraft_smelt			        ""
+bowcraft_repair			""
+bowcraft_check			""
+bowcraft_check_notice		""
+bowcraft_chanceatmin		"50.0"
+bowcraft_exceptional_bonus	"f_craft_exceptionalbonus"
+bowcraft_aftercraft		""	// function called on the item AFTER you craft it (if success only).
+
+bowcraft_category_1_name	"1044457" // Materials
+bowcraft_category_2_name	"1044565" // Ammunition
+bowcraft_category_3_name	"1044566" // Weapons
+
+bowcraft_category_1_1		"i_kindling"
+bowcraft_category_1_2		"i_arrow_shaft"
+
+bowcraft_category_2_1		"i_arrow"
+bowcraft_category_2_2		"i_xbolt"
+bowcraft_category_2_3		"i_fukiya_dart"
+
+bowcraft_category_3_1		"i_bow"
+bowcraft_category_3_2		"i_bow_composite"
+bowcraft_category_3_3		"i_crossbow"
+bowcraft_category_3_4		"i_elven_composite_longbow"
+bowcraft_category_3_5		"i_crossbow_heavy"
+bowcraft_category_3_6		"i_magical_shortbow"
+bowcraft_category_3_7		"i_crossbow_repeating"
+bowcraft_category_3_8		"i_yumi"
+bowcraft_category_3_9		"i_blight_gripped_longbow"
+bowcraft_category_3_10		"i_faerie_fire"
+bowcraft_category_3_11		"i_silvani_feywood_bow"
+bowcraft_category_3_12		"i_mischief_maker"
+bowcraft_category_3_13		"i_night_reaper"
+bowcraft_category_3_14		"i_barbed_longbow"
+bowcraft_category_3_15		"i_slayer_longbow"
+bowcraft_category_3_16		"i_frozen_longbow"
+bowcraft_category_3_17		"i_longbow_might"
+bowcraft_category_3_18		"i_ranger_shortbow"
+bowcraft_category_3_19		"i_lightweight_shortbow"
+bowcraft_category_3_20		"i_mystical_shortbow"
+bowcraft_category_3_21		"i_assassin_shortbow"
+
+
+[DEFNAME sphere_crafting_bowcraft_colored]
+bowcraft_material_0				""
+bowcraft_material_0_name		"log"
+bowcraft_material_0_skill		"Bowcraft 0.0"
+
+bowcraft_material_1				"oak"
+bowcraft_material_1_name		"oak"
+bowcraft_material_1_skill		"Bowcraft 65.0"
+bowcraft_material_1_color		"color_log_oak"
+bowcraft_material_1_resourceid	"i_log_oak"
+bowcraft_material_1_aftercraft  "f_resource_log_aftercraft_oak"
+
+bowcraft_material_2				"ash"
+bowcraft_material_2_name		"ash"
+bowcraft_material_2_skill		"Bowcraft 80.0"
+bowcraft_material_2_color		"color_log_ash"
+bowcraft_material_2_resourceid	"i_log_ash"
+bowcraft_material_2_aftercraft  "f_resource_log_aftercraft_ash"
+
+bowcraft_material_3				"yew"
+bowcraft_material_3_name		"yew"
+bowcraft_material_3_skill		"Bowcraft 95.0"
+bowcraft_material_3_color		"color_log_yew"
+bowcraft_material_3_resourceid	"i_log_yew"
+bowcraft_material_3_aftercraft  "f_resource_log_aftercraft_yew"
+
+bowcraft_material_4				"bloodwood"
+bowcraft_material_4_name		"bloodwood"
+bowcraft_material_4_skill		"Bowcraft 100.0"
+bowcraft_material_4_color		"color_log_bloodwood"
+bowcraft_material_4_resourceid	"i_log_bloodwood"
+bowcraft_material_4_aftercraft  "f_resource_log_aftercraft_bloodwood"
+
+bowcraft_material_5				"heartwood"
+bowcraft_material_5_name		"heartwood"
+bowcraft_material_5_skill		"Bowcraft 100.0"
+bowcraft_material_5_color		"color_log_heartwood"
+bowcraft_material_5_resourceid	"i_log_heartwood"
+bowcraft_material_5_aftercraft  "f_resource_log_aftercraft_heartwood"
+
+bowcraft_material_6				"frostwood"
+bowcraft_material_6_name		"frostwood"
+bowcraft_material_6_skill		"Bowcraft 100.0"
+bowcraft_material_6_color		"color_log_frostwood"
+bowcraft_material_6_resourceid	"i_log_frostwood"
+bowcraft_material_6_aftercraft  "f_resource_log_aftercraft_frostwood"
+
+[EOF]

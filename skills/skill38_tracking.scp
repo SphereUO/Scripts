@@ -1,0 +1,38 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[SKILL 38]
+DEFNAME=Skill_Tracking
+KEY=Tracking
+TITLE=Ranger
+PROMPT_MSG=What do you wish to track?
+DELAY=2.5
+STAT_STR=25
+STAT_DEX=50
+STAT_INT=50
+BONUS_STR=0
+BONUS_DEX=50
+BONUS_INT=50
+BONUS_STATS=25
+ADV_RATE=2.5,50.0,200.0
+
+ON=@PreStart
+	IF !(<SRC.ISPLAYER>)
+	 return 1
+	ENDIF
+
+ON=@Stroke
+	LOCAL.ModZ=<eval <ACT.P.Z>/-10>
+	SRC.ARROWQUEST <eval <ACT.P.X>+<LOCAL.ModZ>>,<eval <ACT.P.Y>+<LOCAL.ModZ>>,38
+
+ON=@Fail
+	SRC.SYSMESSAGE Tracking failed.
+
+ON=@Abort
+	SRC.SYSMESSAGE You stop tracking.
+	SRC.ARROWQUEST 0,0,38
+
+[EOF]

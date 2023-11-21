@@ -1,0 +1,34 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[SKILL 12]
+DEFNAME=Skill_Cartography
+KEY=Cartography
+TITLE=Cartographer
+FLAGS=skf_craft
+DELAY=3.0
+STAT_STR=15
+STAT_DEX=20
+STAT_INT=70
+BONUS_STR=0
+BONUS_DEX=20
+BONUS_INT=80
+BONUS_STATS=15
+ADV_RATE=2.5,50.0,200.0
+VALUES=1,20,80
+
+ON=@Select
+	SRC.SYSMESSAGE This skill cannot be used directly.
+	return 1
+
+ON=@Fail
+	SRC.SYSMESSAGE Thy trembling hand results in an unusable map.
+
+ON=@Abort
+	SRC.SYSMESSAGE You fail to complete the map.
+
+
+[EOF]

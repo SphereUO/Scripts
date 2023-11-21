@@ -1,0 +1,574 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+
+[DIALOG d_charprop1]
+50,50
+
+page 0
+resizepic 0 0 5054 605 445
+gumppictiled 3 3 595 435 2604
+
+gumppictiled 6 6 590 22 2624
+gumppictiled 6 32 480 402 2624
+
+gumppictiled 490 33 106 103 2624
+gumppictiled 490 140 105 295 2624
+checkertrans 3 3 595 435
+dhtmlgump 10 11 585 20 0 0 <DEF.BFONT_WHITE><DEF.CENTER>CHARACTER PROPERTIES<DEF.CENTERE><DEF.BFONTE>
+tilepichue 525 60 <DISPIDDEC> <eval <COLOR> &~ 08000|04000>
+
+page 1
+button 490 140 4008 4010 0 1 0
+dtext 525 140 193 GENERAL
+button 490 160 4026 4028 0 2 0
+dtext 525 160 1000 STATS
+button 490 180 4011 4013 0 3 0
+dtext 525 180 1000 SKILLS
+button 490 200 4029 4031 0 4 0
+dtext 525 200 1000 FLAGS
+
+button 10 35 4020 4022 0 0 0
+dtext 45 35 0c1 Action
+dcroppedtext 120 35 125 20 1000 <ACTION> (<GetCharActionName>)
+
+button 10 55 4005 4007 1 0 100
+dtext 45 55 0c1 Body
+dcroppedtext 120 55 125 20 1000 <BODY>
+
+button 10 75 4005 4007 1 0 101
+dtext 45 75 0c1 Color
+dcroppedtext 120 75 125 20 1000 <COLOR>
+
+button 10 95 4020 4022 0 0 0
+dtext 45 95 0c1 Created
+dcroppedtext 120 95 125 20 1000 <FormatMinutes <eval <CREATE>/600>> ago
+
+button 10 115 4005 4007 1 0 102
+dtext 45 115 0c1 Flags
+dcroppedtext 120 115 125 20 1000 <FLAGS>
+
+button 10 135 4005 4007 1 0 103
+dtext 45 135 0c1 Food
+dcroppedtext 120 135 125 20 1000 <FOOD> (<FOOD>/<MAXFOOD>)
+
+button 10 155 4005 4007 1 0 104
+dtext 45 155 0c1 Name
+dcroppedtext 120 155 125 20 1000 <NAME>
+
+button 10 175 4005 4007 1 0 105
+dtext 45 175 0c1 P
+dcroppedtext 120 175 125 20 1000 <P>
+
+button 10 195 4005 4007 1 0 106
+dtext 45 195 0c1 Title
+dcroppedtext 120 195 125 20 1000 <TITLE>
+
+button 10 215 4020 4022 0 0 0
+dtext 45 215 0c1 UID
+dcroppedtext 120 215 125 20 1000 <UID>
+
+button 10 235 4020 4022 0 0 0
+dtext 45 235 0c1 Weight
+dcroppedtext 120 235 125 20 1000 <fval <WEIGHT>>/<fval <MAXWEIGHT>>
+
+button 10 275 4005 4007 1 0 107
+dtext 45 275 0c1 Fame
+dcroppedtext 120 275 125 20 1000 <FAME>
+
+button 10 295 4005 4007 1 0 108
+dtext 45 295 0c1 Karma
+dcroppedtext 120 295 125 20 1000 <KARMA>
+
+IF (<SERV.ExperienceSystem>)
+ button 10 335 4005 4007 1 0 109
+ dtext 45 335 0c1 Exp
+ dcroppedtext 120 335 125 20 1000 <EXP>
+ENDIF
+
+IF (<SERV.LevelSystem>)
+ button 10 355 4005 4007 1 0 110
+ dtext 45 355 0c1 Level
+ dcroppedtext 120 355 125 20 1000 <LEVEL>
+ENDIF
+
+IF (<ISPLAYER>)
+ dtext 250 35 193 Player properties
+
+ button 250 55 4020 4022 0 0 0
+ dtext 285 55 0c1 Account
+ dcroppedtext 360 55 125 20 1000 <ACCOUNT>
+
+ button 250 75 4020 4022 0 0 0
+ dtext 285 75 0c1 LastUsed
+ dcroppedtext 360 75 125 20 1000 <FormatMinutes <eval <LASTUSED>/60>> ago
+
+ button 250 115 4020 4022 0 0 0
+ dtext 285 115 0c1 Gold
+ dcroppedtext 360 115 125 20 1000 <QVAL (<SERV.FeatureTOL> & 02)? <VIRTUALGOLD> : <GOLD>>	//FEATURE_TOL_VIRTUALGOLD
+
+ button 250 135 4020 4022 0 0 0
+ dtext 285 135 0c1 Guild
+ IF (<GUILD>)
+  dcroppedtext 360 135 125 20 1000 <GUILD> (<GUILDABBREV>)
+ ENDIF
+
+ button 250 155 4005 4007 1 0 120
+ dtext 285 155 0c1 Profile
+ dcroppedtext 360 155 125 20 1000 <PROFILE>
+
+ button 250 175 4005 4007 1 0 121
+ dtext 285 175 0c1 RefuseTrade
+ dcroppedtext 360 175 125 20 1000 <REFUSETRADES>
+
+ button 250 215 4005 4007 1 0 122
+ dtext 285 215 0c1 Kills
+ dcroppedtext 360 215 125 20 1000 <KILLS>
+
+ button 250 235 4005 4007 1 0 123
+ dtext 285 235 0c1 Deaths
+ dcroppedtext 360 235 125 20 1000 <DEATHS>
+
+ IF (<SERV.OptionFlags> & 010)	//OF_PetSlots
+  button 250 275 4020 4022 0 0 0
+  dtext 285 275 0c1 Followers
+  dcroppedtext 360 275 125 20 1000 <CURFOLLOWER>/<MAXFOLLOWER>
+ ENDIF
+ELSE
+ dtext 250 35 193 NPC properties
+
+ button 250 55 4005 4007 1 0 130
+ dtext 285 55 0c1 Brain
+ dcroppedtext 360 55 125 20 1000 <NPC> (<DEF.NPCBrain.<NPC>>)
+
+ button 250 75 4005 4007 1 0 131
+ dtext 285 75 0c1 Home
+ dcroppedtext 360 75 125 20 1000 <HOME>
+
+ button 250 95 4005 4007 1 0 132
+ dtext 285 95 0c1 HomeDist
+ dcroppedtext 360 95 125 20 1000 <HOMEDIST>
+
+ button 250 115 4020 4022 0 0 0
+ dtext 285 115 0c1 Owner
+ IF (<OWNER>)
+  dcroppedtext 360 115 125 20 1000 <OWNER> (<OWNER.NAME>)
+ ENDIF
+
+ button 250 135 4020 4022 0 0 0
+ dtext 285 135 0c1 SpawnItem
+ IF (<FLAGS> & statf_spawned)
+  dcroppedtext 360 135 125 20 1000 <SPAWNITEM>
+ ENDIF
+
+ button 250 175 4005 4007 1 0 133
+ dtext 285 175 0c1 Bonded
+ dcroppedtext 360 175 125 20 1000 <BONDED>
+
+ IF (<SERV.OptionFlags> & 010)	//OF_PetSlots
+  button 250 195 4005 4007 1 0 134
+  dtext 285 195 0c1 FollowerSlot
+  dcroppedtext 360 195 125 20 1000 <FOLLOWERSLOTS>
+ ENDIF
+ENDIF
+
+page 2
+button 490 140 4008 4010 0 1 0
+dtext 525 140 1000 GENERAL
+button 490 160 4026 4028 0 2 0
+dtext 525 160 193 STATS
+button 490 180 4011 4013 0 3 0
+dtext 525 180 1000 SKILLS
+button 490 200 4029 4031 0 4 0
+dtext 525 200 1000 FLAGS
+
+button 10 35 4005 4007 1 0 200
+dtext 45 35 333 STR
+dcroppedtext 120 35 125 20 1000 <STR>
+
+button 10 55 4005 4007 1 0 201
+dtext 45 55 353 DEX
+dcroppedtext 120 55 125 20 1000 <DEX>
+
+button 10 75 4005 4007 1 0 202
+dtext 45 75 393 INT
+dcroppedtext 120 75 125 20 1000 <INT>
+
+button 10 115 4005 4007 1 0 203
+dtext 45 115 333 Hits
+dcroppedtext 120 115 125 20 1000 <HITS>
+
+button 10 135 4005 4007 1 0 204
+dtext 45 135 353 Stam
+dcroppedtext 120 135 125 20 1000 <STAM>
+
+button 10 155 4005 4007 1 0 205
+dtext 45 155 393 Mana
+dcroppedtext 120 155 125 20 1000 <MANA>
+
+button 10 195 4005 4007 1 0 206
+dtext 45 195 2048 Dam
+dcroppedtext 120 195 125 20 1000 <DAM>
+
+IF (<SERV.CombatFlags> & 08)	//COMBATF_ELEMENTAL_ENGINE
+ button 10 215 4005 4007 1 0 207
+ dtext 45 215 903 DamPhysical
+ dcroppedtext 120 215 125 20 1000 <DAMPHYSICAL>%
+
+ button 10 235 4005 4007 1 0 208
+ dtext 45 235 333 DamFire
+ dcroppedtext 120 235 125 20 1000 <DAMFIRE>%
+
+ button 10 255 4005 4007 1 0 209
+ dtext 45 255 393 DamCold
+ dcroppedtext 120 255 125 20 1000 <DAMCOLD>%
+
+ button 10 275 4005 4007 1 0 210
+ dtext 45 275 363 DamPoison
+ dcroppedtext 120 275 125 20 1000 <DAMPOISON>%
+
+ button 10 295 4005 4007 1 0 211
+ dtext 45 295 323 DamEnergy
+ dcroppedtext 120 295 125 20 1000 <DAMENERGY>%
+ENDIF
+
+button 250 35 4005 4007 1 0 212
+dtext 285 35 333 ModSTR
+dcroppedtext 360 35 125 20 1000 <MODSTR>
+
+button 250 55 4005 4007 1 0 213
+dtext 285 55 353 ModDEX
+dcroppedtext 360 55 125 20 1000 <MODDEX>
+
+button 250 75 4005 4007 1 0 214
+dtext 285 75 393 ModINT
+dcroppedtext 360 75 125 20 1000 <MODINT>
+
+button 250 115 4005 4007 1 0 215
+dtext 285 115 333 MaxHits
+dcroppedtext 360 115 125 20 1000 <MAXHITS>
+
+button 250 135 4005 4007 1 0 216
+dtext 285 135 353 MaxStam
+dcroppedtext 360 135 125 20 1000 <MAXSTAM>
+
+button 250 155 4005 4007 1 0 217
+dtext 285 155 393 MaxMana
+dcroppedtext 360 155 125 20 1000 <MAXMANA>
+
+IF (<SERV.CombatFlags> & 08)	//COMBATF_ELEMENTAL_ENGINE
+ button 250 215 4005 4007 1 0 218
+ dtext 285 215 903 ResPhysical
+ dcroppedtext 360 215 125 20 1000 <RESPHYSICAL>%
+
+ button 250 235 4005 4007 1 0 219
+ dtext 285 235 333 ResFire
+ dcroppedtext 360 235 125 20 1000 <RESFIRE>%
+
+ button 250 255 4005 4007 1 0 220
+ dtext 285 255 393 ResCold
+ dcroppedtext 360 255 125 20 1000 <RESCOLD>%
+
+ button 250 275 4005 4007 1 0 221
+ dtext 285 275 363 ResPoison
+ dcroppedtext 360 275 125 20 1000 <RESPOISON>%
+
+ button 250 295 4005 4007 1 0 222
+ dtext 285 295 323 ResEnergy
+ dcroppedtext 360 295 125 20 1000 <RESENERGY>%
+ELSE
+ button 250 195 4020 4022 0 0 0
+ dtext 285 195 2048 AR
+ dcroppedtext 360 195 125 20 1000 <AR>
+
+ button 250 215 4005 4007 1 0 223
+ dtext 285 215 2048 ModAR
+ dcroppedtext 360 215 125 20 1000 <MODAR>
+ENDIF
+
+page 3
+button 490 140 4008 4010 0 1 0
+dtext 525 140 1000 GENERAL
+button 490 160 4026 4028 0 2 0
+dtext 525 160 1000 STATS
+button 490 180 4011 4013 0 3 0
+dtext 525 180 193 SKILLS
+button 490 200 4029 4031 0 4 0
+dtext 525 200 1000 FLAGS
+
+FOR 0 57
+ IF (<SERV.SKILL.<LOCAL._FOR>>)
+  button <eval 10+((<LOCAL._FOR>/20)*160)> <eval 35+((<LOCAL._FOR>%20)*20)> 4005 4007 1 0 <eval 300+<LOCAL._FOR>>
+  dcroppedtext <eval 45+((<LOCAL._FOR>/20)*160)> <eval 35+((<LOCAL._FOR>%20)*20)> 70 20 2048 <SERV.SKILL.<LOCAL._FOR>.KEY>
+  dcroppedtext <eval 120+((<LOCAL._FOR>/20)*160)> <eval 35+((<LOCAL._FOR>%20)*20)> 45 20 1000 <I.<LOCAL._FOR>>
+ ENDIF
+ENDFOR
+
+button 330 415 4005 4007 1 0 360
+dtext 365 415 2048 All Skills
+dcroppedtext 440 415 45 20 1000 <fval <SKILLTOTAL>>
+
+page 4
+button 490 140 4008 4010 0 1 0
+dtext 525 140 1000 GENERAL
+button 490 160 4026 4028 0 2 0
+dtext 525 160 1000 STATS
+button 490 180 4011 4013 0 3 0
+dtext 525 180 1000 SKILLS
+button 490 200 4029 4031 0 0 0
+dtext 525 200 193 FLAGS
+
+LOCAL.Flag=01
+FOR 0 38
+ IF !(<isempty <DEF.CharFlag.<eval <LOCAL._FOR>+1>>>)
+  checkbox <eval 10+((<LOCAL._FOR>/20)*240)> <eval 35+((<LOCAL._FOR>%20)*20)> 210 211 <hval (<FLAGS> & <LOCAL.Flag>)> <eval 400+<LOCAL._FOR>>
+  dtext <eval 35+((<LOCAL._FOR>/20)*240)> <eval 35+((<LOCAL._FOR>%20)*20)> 1000 <DEF0.CharFlag.<eval <LOCAL._FOR>+1>>
+ ENDIF
+ // Workaround: LOCAL.Flag=<hval <LOCAL.Flag> << 1> doesn't evaluate << correctly
+ LOCAL.Flag="<LOCAL.Flag> << 1"
+ LOCAL.Flag=<hval <LOCAL.Flag>>
+ENDFOR
+
+button 250 415 4005 4006 1 0 400
+dtext 285 415 2048 Set flags
+
+[DIALOG d_charprop1 BUTTON]
+// ON=0
+// IF (<SRC.CTAG0.Dialog.Admin.Clients>)
+//  DIALOG d_SpherePlayerTweak
+// ENDIF
+
+ON=100
+TRYP 4 INPDLG BODY 30
+
+ON=101
+TRYP 4 INPDLG COLOR 16
+
+ON=102
+TRYP 4 INPDLG FLAGS 9
+
+ON=103
+TRYP 3 INPDLG FOOD 4
+
+ON=104
+TRYP 3 INPDLG NAME 30
+
+ON=105
+TRYP 3 INPDLG P 16
+
+ON=106
+TRYP 4 INPDLG TITLE 30
+
+ON=107
+TRYP 4 INPDLG FAME 6
+
+ON=108
+TRYP 4 INPDLG KARMA 6
+
+ON=109
+TRYP 4 INPDLG EXP 10
+
+ON=110
+TRYP 4 INPDLG LEVEL 10
+
+ON=120
+TRYP 4 INPDLG PROFILE 4096
+
+ON=121
+TRYP 3 INPDLG REFUSETRADES 1
+
+ON=122
+TRYP 4 INPDLG KILLS 5
+
+ON=123
+TRYP 4 INPDLG DEATHS 5
+
+ON=130
+TRYP 4 INPDLG NPC 20
+
+ON=131
+TRYP 3 INPDLG HOME 16
+
+ON=132
+TRYP 3 INPDLG HOMEDIST 16
+
+ON=133
+TRYP 4 INPDLG BONDED 1
+
+ON=134
+TRYP 4 INPDLG FOLLOWERSLOTS 1
+
+ON=200
+TRYP 4 INPDLG STR 5
+
+ON=201
+TRYP 4 INPDLG DEX 5
+
+ON=202
+TRYP 4 INPDLG INT 5
+
+ON=203
+TRYP 4 INPDLG HITS 5
+
+ON=204
+TRYP 4 INPDLG STAM 5
+
+ON=205
+TRYP 4 INPDLG MANA 5
+
+ON=206
+TRYP 4 INPDLG DAM 9
+
+ON=207
+TRYP 4 INPDLG DAMPHYSICAL 4
+
+ON=208
+TRYP 4 INPDLG DAMFIRE 4
+
+ON=209
+TRYP 4 INPDLG DAMCOLD 4
+
+ON=210
+TRYP 4 INPDLG DAMPOISON 4
+
+ON=211
+TRYP 4 INPDLG DAMENERGY 4
+
+ON=212
+TRYP 4 INPDLG MODSTR 5
+
+ON=213
+TRYP 4 INPDLG MODDEX 5
+
+ON=214
+TRYP 4 INPDLG MODINT 5
+
+ON=215
+TRYP 4 INPDLG MAXHITS 5
+
+ON=216
+TRYP 4 INPDLG MAXSTAM 5
+
+ON=217
+TRYP 4 INPDLG MAXMANA 5
+
+ON=218
+TRYP 4 INPDLG RESPHYSICAL 4
+
+ON=219
+TRYP 4 INPDLG RESFIRE 4
+
+ON=220
+TRYP 4 INPDLG RESCOLD 4
+
+ON=221
+TRYP 4 INPDLG RESPOISON 4
+
+ON=222
+TRYP 4 INPDLG RESENERGY 4
+
+ON=223
+TRYP 4 INPDLG MODAR 3
+
+ON=300 357
+TRYP 4 INPDLG <SERV.SKILL.<eval <ARGN>-300>.KEY> 5
+
+ON=360
+TRYP 4 INPDLG ALLSKILLS 5
+
+ON=400
+LOCAL.Flag=01
+FOR 0 38
+ IF !(<isempty <DEF.CharFlag.<eval <LOCAL._FOR>+1>>>)
+  IF (<ARGCHK[<eval <LOCAL._FOR>+400>]>)
+   FLAGS |= <LOCAL.Flag>
+  ELSE
+   FLAGS &= ~<LOCAL.Flag>
+  ENDIF
+ ENDIF
+ // Workaround: LOCAL.Flag=<hval <LOCAL.Flag> << 1> doesn't evaluate << correctly
+ LOCAL.Flag="<LOCAL.Flag> << 1"
+ LOCAL.Flag=<hval <LOCAL.Flag>>
+ENDFOR
+DIALOG d_charprop1 4
+SRC.SYSMESSAGE Flags modified
+
+[DEFNAME CharFlagNames]
+CharFlag.1	"Invulnerable"
+CharFlag.2	"Dead"
+CharFlag.3	"Frozen"
+CharFlag.4	"Invisible"
+CharFlag.5	"Freeze cast"
+CharFlag.6	"Warmode"
+CharFlag.7	"Reactive Armor"
+CharFlag.8	"Poisoned"
+CharFlag.9	"Nightsight"
+CharFlag.10	"Magic Reflect"
+CharFlag.11	"Polymorphed"
+CharFlag.12	"Incognito"
+CharFlag.13	"Spirit Speak"
+CharFlag.14	"Insubstantial"
+CharFlag.15	"Emote actions"
+CharFlag.16	"Communication crystal"
+CharFlag.17	"Has shield"
+CharFlag.18	"Can move with bow"
+CharFlag.19	"Stoned"
+CharFlag.20	"Hovering"
+CharFlag.21	"Flying"
+CharFlag.23	"Hallucinated"
+CharFlag.24	"Hidden"
+CharFlag.25	"Indoors"
+CharFlag.26	"Criminal"
+CharFlag.27	"Summoned"
+CharFlag.28	"Pet"
+CharFlag.29	"Spawned"
+CharFlag.30	"Save parity"
+CharFlag.31	"Ridden"
+CharFlag.32	"Mounted on horseback"
+
+[FUNCTION GetCharActionName]
+IF ((<ACTION> >= skill_anatomy) && (<ACTION> <= skill_throwing))	//1 ~ 57
+ return <DEFMSG.skillact_using> <SERV.SKILL.<eval <ACTION> & 0ff>.KEY>
+ELIF (<ACTION> == 100)
+ return <DEFMSG.skillact_following>
+ELIF (<ACTION> == 101)
+ return <DEFMSG.skillact_staying>
+ELIF (<ACTION> == 102)
+ return <DEFMSG.skillact_goingto>
+ELIF (<ACTION> == 103)
+ return <DEFMSG.skillact_wandering>
+ELIF (<ACTION> == 104)
+ return <DEFMSG.skillact_looking>
+ELIF (<ACTION> == 105)
+ return <DEFMSG.skillact_fleeing>
+ELIF (<ACTION> == 106)
+ return <DEFMSG.skillact_talking>
+ELIF (<ACTION> == 107)
+ return <DEFMSG.skillact_talkfollow>
+ELIF (<ACTION> == 108)
+ return <DEFMSG.skillact_guarding>
+ELIF (<ACTION> == 109)
+ return <DEFMSG.skillact_goinghome>
+ELIF (<ACTION> == 110)
+ return <DEFMSG.skillact_breathing>
+ELIF (<ACTION> == 111)
+ return <DEFMSG.skillact_ridden>
+ELIF (<ACTION> == 112)
+ return <DEFMSG.skillact_throwing>
+ELIF (<ACTION> == 113)
+ return <DEFMSG.skillact_training>
+ELIF (<ACTION> == 114)
+ return <DEFMSG.skillact_napping>
+ELIF (<ACTION> == 115)
+ return <DEFMSG.skillact_searchingfood>
+ELIF (<ACTION> == 116)
+ return <DEFMSG.skillact_runningto>
+ELSE
+ return Waiting//<DEFMSG.skillact_idling>
+ENDIF
+
+[EOF]
+	

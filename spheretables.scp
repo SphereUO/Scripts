@@ -1,0 +1,350 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[COMMENT spheretables]
+NOTE: THIS FILE is loaded 2nd after SPHERE.INI and the order is very important,
+so be aware that the RESOURCES section is processed top down... IF a FILE near
+the top is dependant on a FILE near the bottom, you may TRY to slide the dependent
+FILE up the list... but sometimes unreconcilable dependencies CAN happen, in which
+case the problematic FILE may need to be split.
+
+As a general rule:
+- DEFNAMES come first
+- TYPEDEF and EVENTS second
+- ITEMDEF and CHARDEF
+- REGION* comes before AREADEF and ROOMDEF
+- TEMPLATE last
+
+
+[RESOURCES]
+// sphere.ini and spheretable.scp are automatic.
+// All the other scripts we want to load.
+core/backwards/compatibility_functions.scp
+//core/backwards/
+//core/combat_override.scp // incomplete and outdated
+core/defs.scp
+core/defs_component_props.scp
+core/defs_buffs_debuffs.scp
+core/defs_faction.scp
+core/defs_height.scp
+core/defs_hues.scp
+core/defs_html.scp
+core/defs_mounts.scp
+core/defs_sounds.scp
+core/defs_sphere.scp
+core/defs_types_hardcoded.scp
+core/messages.scp
+core/serv_triggers.scp
+core/magic_preaos.scp
+core/dialogs/
+core/dialogs/admin/
+core/dialogs/admin/language/
+core/dialogs/region_creator/
+skills/
+skills/menus/
+core/skillclasses.scp
+speech/
+speech/human/
+speech/jobs/
+speech/monsters/
+speech/towns/
+types/
+items/
+items/magic_pre_aos/
+//items/not_complete/  //uncomment this line before execute dui command to avoid
+items/weapons/
+items/armors/
+items/resources/
+multis/
+core/regionresources.scp 	//Must be define after ITEM
+core/regiontypes.scp		//Must be define after ITEM
+events/
+spells/
+npcs/
+spawns/
+functions/
+
+// systems
+systems/crafting/
+systems/crafting/interface/
+systems/stones/
+systems/stones/guilds/
+systems/stones/towns/
+systems/housing/
+
+// maps
+maps/map0/map0_starts.scp
+maps/map0/map0_moongates.scp
+maps/map0/map0_areas.scp
+maps/map0/map0_areas_ml.scp
+maps/map0/map0_areas_sa.scp
+maps/map0/map0_areas_hs.scp
+maps/map0/map0_rooms.scp
+maps/map0/map0_teleports.scp
+maps/map0/map0_teleports_ml.scp
+maps/map0/map0_teleports_hs.scp
+maps/map0/map0_teleports_tol.scp
+
+maps/map1/map1_moongates.scp
+maps/map1/map1_areas.scp
+//maps/map1/map1_areas_aos_old_haven.scp
+maps/map1/map1_areas_ml_new_haven.scp
+maps/map1/map1_areas_ml.scp
+maps/map1/map1_areas_sa.scp
+maps/map1/map1_areas_hs.scp
+maps/map1/map1_rooms.scp
+maps/map1/map1_teleports.scp
+maps/map1/map1_teleports_ml.scp
+maps/map1/map1_teleports_ml_new_haven.scp
+maps/map1/map1_teleports_hs.scp
+maps/map1/map1_teleports_tol.scp
+
+maps/map2/map2_areas.scp
+maps/map2/map2_areas_ml.scp
+maps/map2/map2_teleports.scp
+maps/map2/map2_teleports_ml.scp
+maps/map2/map2_moongates.scp
+
+maps/map3/map3_areas.scp
+maps/map3/map3_areas_ml.scp
+maps/map3/map3_areas_se.scp
+maps/map3/map3_teleports.scp
+maps/map3/map3_teleports_ml.scp
+maps/map3/map3_teleports_se.scp
+maps/map3/map3_moongates.scp
+
+maps/map4/map4_areas.scp
+maps/map4/map4_teleports.scp
+maps/map4/map4_moongates.scp
+
+maps/map5/map5_areas.scp
+maps/map5/map5_areas_tol.scp
+maps/map5/map5_teleports.scp
+maps/map5/map5_teleports_tol.scp
+maps/map5/map5_moongates.scp
+maps/map5/map5_moongates_tol.scp
+
+//templates
+templates/tm_generic.scp
+templates/
+templates/special/
+
+//WorldGen Should be comment after the word generation is done
+systems/worldgen/crops/
+systems/worldgen/decoration/
+systems/worldgen/decoration/felucca/
+systems/worldgen/decoration/ilshenar/
+systems/worldgen/decoration/malas/
+systems/worldgen/decoration/misc/
+systems/worldgen/decoration/termur/
+systems/worldgen/decoration/tokuno/
+systems/worldgen/decoration/trammel/
+systems/worldgen/spawns/
+systems/worldgen/spawns/felucca/
+systems/worldgen/spawns/ilshenar/
+systems/worldgen/spawns/malas/
+systems/worldgen/spawns/termur/
+systems/worldgen/spawns/tokuno/
+systems/worldgen/spawns/trammel/
+systems/worldgen/spawns/uoclassic/
+
+//custom/
+
+[OBSCENE]
+
+[FAME]
+0,2000,6000
+Anonymous
+Known
+Famous
+
+[KARMA]
+-10000,-6000,-2000,2001,6001
+Wicked
+Belligerent
+Neutral
+Kindly
+Goodhearted
+
+[NOTOTITLES] // NotoTitles
+9900,5000,1000,500,100,-100,-500,-1000,-5000,-9900    // karma levels
+500,1000,5000,9900                                    // fame levels
+
+// highest karma
+Trustworthy
+Estimable
+Great
+Glorious
+Glorious
+
+Honest
+Commendable
+Famed
+Illustrious
+Illustrious
+
+Good
+Honorable
+Admirable
+Noble
+Noble
+
+Kind
+Respectable
+Proper
+Eminent
+Eminent
+
+Fair
+Upstanding
+Reputable
+Distinguished
+Distinguished
+
+<none>
+Notable
+Prominent
+Renowned
+Renowned
+
+Rude
+Disreputable
+Notorious
+Infamous
+Dishonored
+
+Unsavory
+Dishonorable
+Ignoble
+Sinister
+Sinister
+
+Scoundrel
+Malicious
+Vile
+Villainous
+Dark
+
+Despicable
+Dastardly
+Wicked
+Evil
+Evil
+
+Outcast
+Wretched
+Nefarious
+Dread
+Dread
+
+
+[RUNES]
+An
+Bet
+Corp
+Des
+Ex
+Flam
+Grav
+Hur
+In
+Jux
+Kal
+Lor
+Mani
+Nox
+Ort
+Por
+Quas
+Rel
+Sanct
+Tym
+Uus
+Vas
+Wis
+Xen
+Ylem
+Zan
+
+[PLEVEL 1]	// extra player commands.
+AFK
+DETAIL
+WHERE
+HUNGRY
+SUICIDE
+SELF
+LAST
+PASSWORD
+EMAIL
+HELPPAGE
+
+[PLEVEL 2]	// extra counselor commands.
+//HELP
+CAST
+TELE
+ANIM
+SLEEP
+UNDERWEAR
+BARK
+FIX
+RESEND
+INFO
+ADMIN
+PAGE
+GM
+GO
+GOUID
+GOCHAR
+GOSOCK
+GOCLI
+XGO
+JAIL
+FORGIVE
+// Scripted functions
+t	// teleport
+sm	// staff message
+//gmtravel
+
+[PLEVEL 3]
+CHARLIST
+
+[PLEVEL 4]
+ADD
+ADDNPC
+BADSPAWN
+GOTYPE
+GONAME
+NUKE
+LINK
+SAVE
+TILE
+
+[PLEVEL 6]
+ACCOUNT
+SETPRIV
+DIALOG
+BLOCKIP
+//TOME
+EXTRACT
+UNEXTRACT
+EXPORT
+IMPORT
+SERV.CLEARVARS
+
+[PLEVEL 7]
+SRC
+OBJ
+NEW
+DB
+FILE
+TRY
+TRYP
+TRYSRC
+TRYSRV
+PLEVEL
+SERV.MYSQLPASSWORD
+
+[EOF]

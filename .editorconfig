@@ -1,0 +1,13 @@
+# http://editorconfig.org
+root=true
+
+[*]
+indent_style = space
+trim_trailing_whitespace = true
+
+[*.scp]
+tab_width = 4
+charset = utf-8
+
+[*.md,txt]
+indent_size = 4

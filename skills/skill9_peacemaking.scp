@@ -1,0 +1,28 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[SKILL 9]
+DEFNAME=Skill_Peacemaking
+KEY=Peacemaking
+TITLE=Pacifier
+DELAY=2.0
+STAT_STR=0
+STAT_DEX=70
+STAT_INT=70
+BONUS_STR=0
+BONUS_DEX=50
+BONUS_INT=50
+BONUS_STATS=5
+ADV_RATE=2.5,50.0,200.0
+
+ON=@Fail
+	SRC.SYSMESSAGE You attempt to calm everyone, but fail.
+
+ON=@Abort
+	SRC.SYSMESSAGE You fail to complete the song.
+
+
+[EOF]

@@ -1,0 +1,28 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[SKILL 19]
+DEFNAME=Skill_Forensics
+KEY=Forensics
+TITLE=Detective
+PROMPT_MSG=What corpse would you like to examine?
+DELAY=1.0
+STAT_STR=10
+STAT_DEX=25
+STAT_INT=60
+BONUS_STR=0
+BONUS_DEX=0
+BONUS_INT=100
+BONUS_STATS=25
+ADV_RATE=2.5,50.0,200.0
+
+ON=@Fail
+	SRC.SYSMESSAGE You can tell nothing about the corpse.
+
+ON=@Abort
+	SRC.SYSMESSAGE You decide you'd rather not look at that.
+
+[EOF]

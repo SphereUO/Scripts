@@ -1,0 +1,30 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[SKILL 8]
+DEFNAME=Skill_Bowcraft
+KEY=Bowcraft
+TITLE=Bowyer
+FLAGS=skf_craft
+DELAY=1.2		//Old value=1.7
+STAT_STR=40
+STAT_DEX=70
+STAT_INT=45
+BONUS_STR=15
+BONUS_DEX=70
+BONUS_INT=15
+BONUS_STATS=20
+ADV_RATE=10.0,200.0,800.0
+VALUES=1,30,200
+
+ON=@Fail
+	SRC.SYSMESSAGE You fail to create the item
+
+ON=@Abort
+	SRC.SYSMESSAGE You fail to complete the item.
+
+
+[EOF]

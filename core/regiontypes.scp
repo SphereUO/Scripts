@@ -1,0 +1,131 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+//////////////////////////////////
+// Region Type for mining skill //
+//////////////////////////////////
+
+[REGIONTYPE r_default_rock t_rock]
+// By default, iron is most common, sometimes nothing can be mined, but there
+// is a small chance of a rare diamond.  Shadow ore is cannot be mined.
+RESOURCES=49.6 mr_iron    // This large number makes this very common.
+RESOURCES=11.2 mr_dull_copper
+RESOURCES=9.8 mr_shadow
+RESOURCES=8.4 mr_copper
+RESOURCES=7.0 mr_bronze
+RESOURCES=5.6 mr_gold
+RESOURCES=4.2 mr_agapite
+RESOURCES=2.8 mr_verite
+RESOURCES=1.4 mr_valorite
+
+[REGIONTYPE r_dungeon t_rock]
+// Usually Iron, but sometimes Shadow ore can be mined in dungeons.
+RESOURCES=100.0 mr_nothing
+RESOURCES=30.0 mr_iron
+RESOURCES=5.0 mr_shadow
+
+ON=@REGPERIODIC
+SRC.SOUND={021f 1 0243 1 0244 1 0245 1}
+
+[REGIONTYPE r_spooky t_rock]
+// Iron and Shadow ore are very rarely mined in a spooky region.
+RESOURCES=65.0 mr_nothing  // Usually there is nothing here.
+RESOURCES=30.0 mr_iron
+RESOURCES=5.0 mr_shadow
+
+[REGIONTYPE r_swamp t_rock]
+// There is nothing to mine in a swamp.
+RESOURCES=100.0 mr_nothing
+
+ON=@REGPERIODIC
+SRC.SOUND={0e 10 0f 10 022 1 023 1 024 1 0267 1}
+
+/////////////////////////////////////////
+// Region Type for lumberjacking skill //
+/////////////////////////////////////////
+
+[REGIONTYPE r_default_tree t_tree]
+// All trees produce wood by default.
+RESOURCES=49.0 mr_tree
+RESOURCES=30.0 mr_tree_oak
+RESOURCES=10.0 mr_tree_ash
+RESOURCES=5.0 mr_tree_yew
+RESOURCES=3.0 mr_tree_heartwood
+RESOURCES=2.0 mr_tree_bloodwood
+RESOURCES=1.0 mr_tree_frostwood
+
+///////////////////////////////////
+// Region Type for fishing skill //
+///////////////////////////////////
+
+[REGIONTYPE r_default_water t_water]
+RESOURCES=60.0 mr_nothing  // Most of the time fishing produces nothing.
+RESOURCES=10.0 mr_fish1
+RESOURCES=10.0 mr_fish2
+RESOURCES=10.0 mr_fish3
+RESOURCES=10.0 mr_fish4
+
+[REGIONTYPE r_water t_water]
+RESOURCES=60.0 mr_nothing
+RESOURCES=10.0 mr_fish1
+RESOURCES=10.0 mr_fish2
+RESOURCES=10.0 mr_fish3
+RESOURCES=10.0 mr_fish4
+
+ON=@REGPERIODIC
+// Water/Ocean boat sounds
+SRC.SOUND={025 1 026 1 027 1 010 1 011 1 012 1 013 1}
+
+////////////////////////////////////////
+//  Region Type for herbivores to eat //
+////////////////////////////////////////
+
+[REGIONTYPE r_default_grass t_grass]
+// All grass can be eaten by default.
+RESOURCES=1.0 mr_grass
+
+/////////////////////
+// Generic Regions //
+/////////////////////
+
+[REGIONTYPE r_default]
+ON=@ENTER
+IF <SRC.ISPLAYER> && <SRC.REGION>
+    IF STRCMPI("<TAG.MUSIC>","<SRC.REGION.TAG.MUSIC>")
+        IF !(<isempty <TAG.MUSIC>>)
+            SRC.MIDILIST=<TAG.MUSIC>
+        ELSE
+            SRC.MIDILIST=midi_britain1,midi_ForestA,midi_JungleA,midi_MountainA,midi_Plains,midi_Victory
+        ENDIF
+    ENDIF
+ENDIF
+
+//ON=@CliPeriodic
+//IF <SRC.ISPLAYER> && <SRC.REGION>
+// SRC.MIDILIST=midi_britain1,midi_ForestA,midi_JungleA,midi_MountainA,midi_Plains,midi_Victory
+//ENDIF
+
+[REGIONTYPE r_graveyards]
+ON=@REGPERIODIC
+SRC.SOUND={0a 1 0b 1}
+
+[REGIONTYPE r_forests]
+ON=@REGPERIODIC
+IF (<SRC.SECTOR.ISNIGHTTIME>)
+    SRC.SOUND={00 2 01 2 02 2 07d 1}	//Play these sounds at night.
+ELSE
+    SRC.SOUND={08 10 09 10 0219 1 07d 1}	//Play these sounds during the day.
+ENDIF
+
+[REGIONTYPE r_jungle]
+ON=@REGPERIODIC
+IF (<SRC.SECTOR.ISNIGHTTIME>)
+    SRC.SOUND={0c 2 0d 2 0b3 1}
+ELSE
+    SRC.SOUND={03 2 04 2 05 2 0b3 1}
+ENDIF
+
+[EOF]

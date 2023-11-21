@@ -1,0 +1,21 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[SKILL 43]
+DEFNAME=Skill_Wrestling
+KEY=Wrestling
+TITLE=Wrestler
+FLAGS=skf_fight
+STAT_STR=100
+STAT_DEX=75
+STAT_INT=30
+BONUS_STR=50
+BONUS_DEX=50
+BONUS_INT=0
+BONUS_STATS=10
+ADV_RATE=8.5,120.0,680.0
+
+[EOF]

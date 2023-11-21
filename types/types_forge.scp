@@ -1,0 +1,13 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[TYPEDEF t_forge]
+ON=@DCLICK
+   TARGETF f_craft_blacksmith_smelt_targ
+RETURN 1
+
+
+[EOF]

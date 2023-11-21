@@ -1,0 +1,219 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[COMMENT sphere_item_provisions_log]
+In order to actually chop logs, a REGIONRESOURCE needs to exist for it, and a
+REGIONTYPE needs a REGION= entry to that REGIONRESOURCE... also that same
+REGIONTYPE must be associated to the t_tree Terrain TYPEDEF.
+
+For more information on how wood is choped, check the COMMENT section of the
+sphere_region.scp file.
+
+
+[ITEMDEF 01bd7]
+DEFNAME=i_board
+TYPE=t_board
+VALUE=2
+WEIGHT=1.0
+REPLICATE=1
+RESOURCES=1 i_log
+SKILLMAKE=Carpentry 0.0, t_carpentry
+DUPELIST=01bd8,01bd9,01bda,01bdb,01bdc
+
+CATEGORY=Resources
+SUBSECTION=Wood (boards)
+DESCRIPTION=Board
+
+[ITEMDEF 01bd8]
+DUPEITEM=01bd7
+DESCRIPTION=Boards (3)
+
+[ITEMDEF 01bd9]
+DUPEITEM=01bd7
+DESCRIPTION=Boards (8)
+
+[ITEMDEF 01bda]
+//board
+DUPEITEM=01bd7
+
+[ITEMDEF 01bdb]
+DUPEITEM=01bd7
+DESCRIPTION=Boards (3)
+
+[ITEMDEF 01bdc]
+DUPEITEM=01bd7
+DESCRIPTION=Boards (8)
+
+[ITEMDEF 01bdd]
+DEFNAME=i_log
+NAME=log%s
+TYPE=t_log
+VALUE=1
+WEIGHT=2.0
+DUPELIST=01bde,01bdf,01be0,01be1,01be2
+
+CATEGORY=Resources
+SUBSECTION=Wood (logs)
+DESCRIPTION=Log
+
+[ITEMDEF 01bde]
+DUPEITEM=01bdd
+DESCRIPTION=Logs (3)
+
+[ITEMDEF 01bdf]
+DUPEITEM=01bdd
+DESCRIPTION=Logs (Many)
+
+[ITEMDEF 01be0]
+//log
+DUPEITEM=01bdd
+
+[ITEMDEF 01be1]
+DUPEITEM=01bdd
+DESCRIPTION=Logs (3)
+
+[ITEMDEF 01be2]
+DUPEITEM=01bdd
+DESCRIPTION=Logs (Many)
+
+
+[ITEMDEF i_log_ash]
+ID=i_log
+NAME=ash log%s
+TYPE=t_log
+CATEGORY=Resources
+SUBSECTION=Wood
+DESCRIPTION=Ash Log
+
+ON=@Create
+COLOR=color_log_ash
+
+[ITEMDEF i_board_ash]
+ID=i_board
+NAME=ash board%s
+TYPE=t_board
+CATEGORY=Resources
+SUBSECTION=Boards
+DESCRIPTION=Ash Board
+
+ON=@Create
+COLOR=color_log_ash
+
+[ITEMDEF i_log_oak]
+ID=i_log
+NAME=oak log%s
+TYPE=t_log
+CATEGORY=Resources
+SUBSECTION=Wood
+DESCRIPTION=Oak Log
+
+ON=@Create
+COLOR=color_log_oak
+
+[ITEMDEF i_board_oak]
+ID=i_board
+NAME=oak board%s
+TYPE=t_board
+CATEGORY=Resources
+SUBSECTION=Boards
+DESCRIPTION=Oak Board
+
+ON=@Create
+COLOR=color_log_oak
+
+
+[ITEMDEF i_log_yew]
+ID=i_log
+NAME=yew log%s
+TYPE=t_log
+CATEGORY=Resources
+SUBSECTION=Wood
+DESCRIPTION=Yew Log
+
+ON=@Create
+COLOR=color_log_yew
+
+[ITEMDEF i_board_yew]
+ID=i_board
+NAME=yew board%s
+TYPE=t_board
+CATEGORY=Resources
+SUBSECTION=Boards
+DESCRIPTION=Yew Board
+
+ON=@Create
+COLOR=color_log_yew
+
+
+[ITEMDEF i_log_heartwood]
+ID=i_log
+NAME=heartwoodlog%s
+TYPE=t_log
+CATEGORY=Resources
+SUBSECTION=Wood
+DESCRIPTION=Heartwood Log
+
+ON=@Create
+COLOR=color_log_heartwood
+
+[ITEMDEF i_board_heartwood]
+ID=i_board
+NAME=heartwood board%s
+TYPE=t_board
+CATEGORY=Resources
+SUBSECTION=Boards
+DESCRIPTION=Heartwood Board
+
+ON=@Create
+COLOR=color_log_heartwood
+
+
+[ITEMDEF i_log_frostwood]
+ID=i_log
+NAME=frostwood log%s
+TYPE=t_log
+CATEGORY=Resources
+SUBSECTION=Wood
+DESCRIPTION=Frostwood Log
+
+ON=@Create
+COLOR=color_log_frostwood
+
+[ITEMDEF i_board_frostwood]
+ID=i_board
+NAME=frostwood board%s
+TYPE=t_board
+CATEGORY=Resources
+SUBSECTION=Boards
+DESCRIPTION=Frostwood Board
+
+ON=@Create
+COLOR=color_log_frostwood
+
+
+[ITEMDEF i_log_bloodwood]
+ID=i_log
+NAME=bloodwood log%s
+TYPE=t_log
+CATEGORY=Resources
+SUBSECTION=Wood
+DESCRIPTION=Bloodwood Log
+
+ON=@Create
+COLOR=color_log_bloodwood
+
+[ITEMDEF i_board_bloodwood]
+ID=i_board
+NAME=bloodwood board%s
+TYPE=t_board
+CATEGORY=Resources
+SUBSECTION=Boards
+DESCRIPTION=Bloodwood Board
+
+ON=@Create
+COLOR=color_log_bloodwood
+
+[EOF]

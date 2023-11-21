@@ -1,0 +1,37 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[PLEVEL 1]
+tc
+
+[FUNCTION tc]
+IF ( !<DEF0.TOWNSCFGSPEECH_GLOBAL_ENABLE> )
+    RETURN 1
+ENDIF
+
+IF ( !<TOWN> )
+    RETURN 1
+ENDIF
+
+LOCAL.PRIVSPEECH = <TOWN.MEMBERFROMUID.<UID>.PRIV>
+IF (<LOCAL.PRIVSPEECH> == <DEF.STONEPRIV_ACCEPTED>)
+    LOCAL.PRIVSPEECH = <DEF.STONEPRIV_CANDIDATE>
+ENDIF
+
+IF ((<LOCAL.PRIVSPEECH> == <DEF.STONEPRIV_CANDIDATE>) && !<DEF0.TOWNSCFGSPEECH_ENABLE_CANDIDATES>)
+    RETURN 1
+ENDIF
+
+IF ((<LOCAL.PRIVSPEECH> == <DEF.STONEPRIV_MEMBER>) && !<DEF0.TOWNSCFGSPEECH_ENABLE_MEMBERS>)
+    RETURN 1
+ENDIF
+
+IF (<CTAG0.TOWNSYS_LASTTOWNMSG_TIME> < <SERV.TIME>)
+    CTAG.TOWNSYS_LASTTOWNMSG_TIME = <SERV.TIME> + <DEF0.TOWNSCFGSPEECH_SPAM_INTERVAL>
+    f_townsys_speech_sendsmsg <town.uid>,<args>
+ENDIF
+
+[EOF]

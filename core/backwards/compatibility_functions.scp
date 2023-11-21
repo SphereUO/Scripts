@@ -1,0 +1,134 @@
+//****************************************************************************
+// SphereServer by: SphereServer development team and Menasoft.
+// www.sphereserver.net
+//****************************************************************************
+VERSION=X1
+
+[FUNCTION addnpc]
+args = <qval <isnum <args>> ? <resdef.<serv.chardef.<resourceindex <args>>.defname>> : <resdef.<args>>>
+if (!<isempty <args>> && <serv.chardef.<dargs>>)
+	add <args>
+	return 1
+endif
+sysmessage <defmsg.cmd_invalid>
+
+[FUNCTION tweak]
+INFO
+
+[FUNCTION brain]
+if (<argn>)
+	npc = <argn>
+else
+	return <npc>
+endif
+
+[FUNCTION m]
+MOVE <ARGS>
+
+[FUNCTION invulnerable]
+INVUL <ARGS>
+
+[FUNCTION invisible]
+INVIS <ARGS>
+
+[FUNCTION static]
+args = <qval <isnum <args>> ? <args> : <resourceindex <args>>>
+if (<serv.itemdef.<dargs>>)
+	targetfg f_static <args>
+	sysmessage <defmsg.where_to_place> <serv.itemdef.<args>.name>?
+	return 1
+endif
+sysmessage <defmsg.cmd_invalid>
+
+[FUNCTION f_static]
+newitem <args>
+new.attr |= 010
+new.timer = -1
+new.p = <src.targp>
+act = <new>
+
+[FUNCTION sfx]
+SOUND <ARGS>
+
+[FUNCTION music]
+IF (<ISPLAYER>)
+ MIDILIST <ARGS>
+ENDIF
+
+[FUNCTION cliver]
+return <CLIENTVERSION>
+
+[FUNCTION clientver]
+return <CLIENTVERSION>
+
+[FUNCTION follow]
+SERV.NEWITEM i_eq_followSrc
+NEW.LINK=<QVAL (<dARGS>)? <ARGS>:<UID>>
+NEW.TIMER=2
+NEW.EQUIP
+SRC.SYSMESSAGE Following: <NEW.LINK.NAME> - Use war mode to stop following
+
+[ITEMDEF i_eq_followSrc]
+ID=i_handr_1
+NAME=Follower
+TYPE=t_eq_script
+LAYER=layer_special
+
+ON=@TARGON_CHAR
+LINK=<ARGO>
+
+ON=@TARGON_ITEM
+LINK=<ARGO>
+
+ON=@TIMER
+IF !(<LINK.UID>) || (<CONT.FLAGS> & statf_war)
+ CONT.SYSMESSAGE Follow: off
+ REMOVE
+ return 0
+ELIF STRCMP("'<CONT.P>'","'<LINK.P>'")
+ CONT.FACE <LINK>
+ CONT.P=<LINK.P>
+ CONT.UPDATE
+ENDIF
+TIMER=2
+return 1
+
+[FUNCTION npccast]
+// This function can be used to force a character to cast a specific
+// spell. Works on both players and NPCs. Two arguments can be given:
+//
+// "NpcCast <spell>, <target>"
+// spell  -->  spell id to cast
+// target -->  target (optional, default: previous action's target)
+//             - can be a uid or map location
+//
+// Determine spell and skill used to cast
+LOCAL.SPELL = <RESOURCEINDEX <ARGV[0]>>
+LOCAL.SKILL = <RESOURCEINDEX <STREAT <SERV.SPELL.<LOCAL.SPELL>.SKILLREQ>>>
+IF !(<LOCAL.SKILL>)
+ LOCAL.SKILL = 25
+ENDIF
+
+// Set spell target
+IF (<ARGV> > 2)
+ ACT = 0
+ ACTP = <ARGV[1]>,<ARGV[2]>,<ARGV[3]>,<ARGV[4]>
+ELSE
+ REF1 = <ARGV[1]>
+ IF !(<REF1>)
+  REF1 = <ACT>
+  IF !(<REF1>)
+   REF1 = <UID>
+  ENDIF
+ ENDIF
+ ACT = <REF1>
+ ACTP = <REF1.P>
+ENDIF
+
+// Set character action
+ACTPRV = <UID>
+ACTARG1 = <LOCAL.SPELL>
+ACTION = <LOCAL.SKILL>
+return 1
+
+[EOF]
